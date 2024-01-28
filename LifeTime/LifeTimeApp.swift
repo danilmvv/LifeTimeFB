@@ -3,6 +3,7 @@ import FirebaseCore
 
 @main
 struct LifeTimeApp: App {
+    
     init() {
         FirebaseApp.configure()
     }
@@ -10,6 +11,7 @@ struct LifeTimeApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .preferredColorScheme(.dark)
         }
     }
 }

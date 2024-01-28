@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C7DE3352BED159A0026923F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE3342BED159A0026923F /* SettingsView.swift */; };
+		3C7DE33E2BEE6CAE0026923F /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE33D2BEE6CAE0026923F /* AuthTextField.swift */; };
+		3C7DE3402BEE88E10026923F /* EmailSignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE33F2BEE88E10026923F /* EmailSignInView.swift */; };
+		3C7DE3482BEE9BE00026923F /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE3472BEE9BE00026923F /* ActionButton.swift */; };
+		3C7DE34B2BEEA6440026923F /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE34A2BEEA6440026923F /* AuthService.swift */; };
+		3C7DE34D2BEEA9530026923F /* EmailSignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE34C2BEEA9530026923F /* EmailSignInViewModel.swift */; };
+		3C7DE3522BEEAE190026923F /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE3512BEEAE190026923F /* Validator.swift */; };
+		3C7DE3612BEEC86D0026923F /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE3602BEEC86D0026923F /* AuthView.swift */; };
+		3C7DE36B2BEF60F70026923F /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE36A2BEF60F70026923F /* CustomTextField.swift */; };
+		3C7DE36E2BEF873F0026923F /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE36D2BEF873F0026923F /* AuthViewModel.swift */; };
+		3C7DE3732BEF8C4C0026923F /* View+Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE3722BEF8C4C0026923F /* View+Styles.swift */; };
 		3CD588E02BE7E2BF0073F8DD /* LifeTimeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD588DF2BE7E2BF0073F8DD /* LifeTimeApp.swift */; };
 		3CD588E22BE7E2BF0073F8DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD588E12BE7E2BF0073F8DD /* ContentView.swift */; };
 		3CD588E42BE7E2C10073F8DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CD588E32BE7E2C10073F8DD /* Assets.xcassets */; };
@@ -18,6 +29,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C7DE3342BED159A0026923F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		3C7DE33D2BEE6CAE0026923F /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
+		3C7DE33F2BEE88E10026923F /* EmailSignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignInView.swift; sourceTree = "<group>"; };
+		3C7DE3472BEE9BE00026923F /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
+		3C7DE34A2BEEA6440026923F /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		3C7DE34C2BEEA9530026923F /* EmailSignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignInViewModel.swift; sourceTree = "<group>"; };
+		3C7DE3512BEEAE190026923F /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		3C7DE3602BEEC86D0026923F /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		3C7DE36A2BEF60F70026923F /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		3C7DE36C2BEF73F90026923F /* LifeTime.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LifeTime.entitlements; sourceTree = "<group>"; };
+		3C7DE36D2BEF873F0026923F /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		3C7DE3722BEF8C4C0026923F /* View+Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Styles.swift"; sourceTree = "<group>"; };
 		3CD588DC2BE7E2BF0073F8DD /* LifeTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LifeTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CD588DF2BE7E2BF0073F8DD /* LifeTimeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeTimeApp.swift; sourceTree = "<group>"; };
 		3CD588E12BE7E2BF0073F8DD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -40,6 +63,71 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C7DE32E2BEBFA470026923F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3CD588E12BE7E2BF0073F8DD /* ContentView.swift */,
+				3C7DE35F2BEEC8020026923F /* Settings */,
+				3C7DE3332BED15330026923F /* Auth */,
+				3C7DE3412BEE8C910026923F /* Components */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3C7DE3332BED15330026923F /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				3C7DE3602BEEC86D0026923F /* AuthView.swift */,
+				3C7DE36D2BEF873F0026923F /* AuthViewModel.swift */,
+				3C7DE34F2BEEAB7C0026923F /* EmailSignIn */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		3C7DE3412BEE8C910026923F /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				3C7DE3472BEE9BE00026923F /* ActionButton.swift */,
+				3C7DE33D2BEE6CAE0026923F /* AuthTextField.swift */,
+				3C7DE36A2BEF60F70026923F /* CustomTextField.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		3C7DE3492BEEA5F70026923F /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				3C7DE34A2BEEA6440026923F /* AuthService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		3C7DE34F2BEEAB7C0026923F /* EmailSignIn */ = {
+			isa = PBXGroup;
+			children = (
+				3C7DE33F2BEE88E10026923F /* EmailSignInView.swift */,
+				3C7DE34C2BEEA9530026923F /* EmailSignInViewModel.swift */,
+			);
+			path = EmailSignIn;
+			sourceTree = "<group>";
+		};
+		3C7DE3502BEEAE050026923F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				3C7DE3512BEEAE190026923F /* Validator.swift */,
+				3C7DE3722BEF8C4C0026923F /* View+Styles.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		3C7DE35F2BEEC8020026923F /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				3C7DE3342BED159A0026923F /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		3CD588D32BE7E2BF0073F8DD = {
 			isa = PBXGroup;
 			children = (
@@ -59,8 +147,11 @@
 		3CD588DE2BE7E2BF0073F8DD /* LifeTime */ = {
 			isa = PBXGroup;
 			children = (
+				3C7DE36C2BEF73F90026923F /* LifeTime.entitlements */,
 				3CD588DF2BE7E2BF0073F8DD /* LifeTimeApp.swift */,
-				3CD588E12BE7E2BF0073F8DD /* ContentView.swift */,
+				3C7DE32E2BEBFA470026923F /* Views */,
+				3C7DE3492BEEA5F70026923F /* Service */,
+				3C7DE3502BEEAE050026923F /* Helpers */,
 				3CD588ED2BE7E48A0073F8DD /* GoogleService-Info.plist */,
 				3CD588E32BE7E2C10073F8DD /* Assets.xcassets */,
 				3CD588E52BE7E2C10073F8DD /* Preview Content */,
@@ -155,8 +246,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C7DE33E2BEE6CAE0026923F /* AuthTextField.swift in Sources */,
+				3C7DE3732BEF8C4C0026923F /* View+Styles.swift in Sources */,
+				3C7DE36B2BEF60F70026923F /* CustomTextField.swift in Sources */,
+				3C7DE3522BEEAE190026923F /* Validator.swift in Sources */,
+				3C7DE34D2BEEA9530026923F /* EmailSignInViewModel.swift in Sources */,
+				3C7DE34B2BEEA6440026923F /* AuthService.swift in Sources */,
+				3C7DE3352BED159A0026923F /* SettingsView.swift in Sources */,
+				3C7DE3402BEE88E10026923F /* EmailSignInView.swift in Sources */,
 				3CD588E22BE7E2BF0073F8DD /* ContentView.swift in Sources */,
+				3C7DE36E2BEF873F0026923F /* AuthViewModel.swift in Sources */,
 				3CD588E02BE7E2BF0073F8DD /* LifeTimeApp.swift in Sources */,
+				3C7DE3612BEEC86D0026923F /* AuthView.swift in Sources */,
+				3C7DE3482BEE9BE00026923F /* ActionButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +389,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LifeTime/LifeTime.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"LifeTime/Preview Content\"";
@@ -319,6 +422,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LifeTime/LifeTime.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"LifeTime/Preview Content\"";
