@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C56C93D2BF0BD0E000DD283 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56C93C2BF0BD0E000DD283 /* SettingsViewModel.swift */; };
 		3C7DE3352BED159A0026923F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE3342BED159A0026923F /* SettingsView.swift */; };
 		3C7DE33E2BEE6CAE0026923F /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE33D2BEE6CAE0026923F /* AuthTextField.swift */; };
 		3C7DE3402BEE88E10026923F /* EmailSignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE33F2BEE88E10026923F /* EmailSignInView.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C56C93C2BF0BD0E000DD283 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		3C7DE3342BED159A0026923F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		3C7DE33D2BEE6CAE0026923F /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
 		3C7DE33F2BEE88E10026923F /* EmailSignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignInView.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				3C7DE3342BED159A0026923F /* SettingsView.swift */,
+				3C56C93C2BF0BD0E000DD283 /* SettingsViewModel.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C7DE33E2BEE6CAE0026923F /* AuthTextField.swift in Sources */,
+				3C56C93D2BF0BD0E000DD283 /* SettingsViewModel.swift in Sources */,
 				3C7DE3732BEF8C4C0026923F /* View+Styles.swift in Sources */,
 				3C7DE36B2BEF60F70026923F /* CustomTextField.swift in Sources */,
 				3C7DE3522BEEAE190026923F /* Validator.swift in Sources */,

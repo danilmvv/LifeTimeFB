@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @State private var viewModel = ViewModel()
     @State private var authService = AuthService.shared
     @State private var showEmailSignIn = false
     
@@ -27,7 +28,9 @@ struct SettingsView: View {
                         .padding()
                     
                     Button {
-                        try? authService.signOut()
+                        Task {
+                            await viewModel.signOut()
+                        }
                     } label: {
                         Text("Выйти")
                             .foregroundStyle(Color.appRed)
