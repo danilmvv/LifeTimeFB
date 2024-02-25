@@ -5,9 +5,12 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
+            Color.backgroundPrimary
+                .ignoresSafeArea()
+            
             NavigationStack {
                 if authService.user != nil {
-                    SettingsView()
+                    ActivityView()
                 } else {
                     AuthView()
                 }

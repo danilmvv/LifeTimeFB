@@ -18,6 +18,15 @@
 		3C7DE36B2BEF60F70026923F /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE36A2BEF60F70026923F /* CustomTextField.swift */; };
 		3C7DE36E2BEF873F0026923F /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE36D2BEF873F0026923F /* AuthViewModel.swift */; };
 		3C7DE3732BEF8C4C0026923F /* View+Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE3722BEF8C4C0026923F /* View+Styles.swift */; };
+		3C7DE3762BEFA1020026923F /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE3752BEFA1020026923F /* ActivityView.swift */; };
+		3C7DE3782BEFA7C50026923F /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE3772BEFA7C50026923F /* CircularProgressView.swift */; };
+		3C7DE37A2BEFCDF50026923F /* ActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE3792BEFCDF50026923F /* ActivityViewModel.swift */; };
+		3C7DE37C2BEFDC640026923F /* FormattedTimeText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE37B2BEFDC640026923F /* FormattedTimeText.swift */; };
+		3C7DE37F2BEFDE4F0026923F /* ActivitySelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE37E2BEFDE4F0026923F /* ActivitySelector.swift */; };
+		3C7DE3812BF0A9120026923F /* TimeInterval+toHours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE3802BF0A9120026923F /* TimeInterval+toHours.swift */; };
+		3C7DE3862BF0AAF70026923F /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE3852BF0AAF70026923F /* Activity.swift */; };
+		3C7DE3882BF0AD1C0026923F /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE3872BF0AD1B0026923F /* Color+Hex.swift */; };
+		3C7DE38C2BF0B2EB0026923F /* GoalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE38B2BF0B2EB0026923F /* GoalType.swift */; };
 		3CD588E02BE7E2BF0073F8DD /* LifeTimeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD588DF2BE7E2BF0073F8DD /* LifeTimeApp.swift */; };
 		3CD588E22BE7E2BF0073F8DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CD588E12BE7E2BF0073F8DD /* ContentView.swift */; };
 		3CD588E42BE7E2C10073F8DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CD588E32BE7E2C10073F8DD /* Assets.xcassets */; };
@@ -41,6 +50,15 @@
 		3C7DE36C2BEF73F90026923F /* LifeTime.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LifeTime.entitlements; sourceTree = "<group>"; };
 		3C7DE36D2BEF873F0026923F /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		3C7DE3722BEF8C4C0026923F /* View+Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Styles.swift"; sourceTree = "<group>"; };
+		3C7DE3752BEFA1020026923F /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
+		3C7DE3772BEFA7C50026923F /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
+		3C7DE3792BEFCDF50026923F /* ActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewModel.swift; sourceTree = "<group>"; };
+		3C7DE37B2BEFDC640026923F /* FormattedTimeText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattedTimeText.swift; sourceTree = "<group>"; };
+		3C7DE37E2BEFDE4F0026923F /* ActivitySelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitySelector.swift; sourceTree = "<group>"; };
+		3C7DE3802BF0A9120026923F /* TimeInterval+toHours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+toHours.swift"; sourceTree = "<group>"; };
+		3C7DE3852BF0AAF70026923F /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		3C7DE3872BF0AD1B0026923F /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
+		3C7DE38B2BF0B2EB0026923F /* GoalType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalType.swift; sourceTree = "<group>"; };
 		3CD588DC2BE7E2BF0073F8DD /* LifeTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LifeTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CD588DF2BE7E2BF0073F8DD /* LifeTimeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeTimeApp.swift; sourceTree = "<group>"; };
 		3CD588E12BE7E2BF0073F8DD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -67,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				3CD588E12BE7E2BF0073F8DD /* ContentView.swift */,
+				3C7DE3742BEFA0F10026923F /* Activity */,
 				3C7DE35F2BEEC8020026923F /* Settings */,
 				3C7DE3332BED15330026923F /* Auth */,
 				3C7DE3412BEE8C910026923F /* Components */,
@@ -116,6 +135,8 @@
 			children = (
 				3C7DE3512BEEAE190026923F /* Validator.swift */,
 				3C7DE3722BEF8C4C0026923F /* View+Styles.swift */,
+				3C7DE3802BF0A9120026923F /* TimeInterval+toHours.swift */,
+				3C7DE3872BF0AD1B0026923F /* Color+Hex.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -126,6 +147,35 @@
 				3C7DE3342BED159A0026923F /* SettingsView.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		3C7DE3742BEFA0F10026923F /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				3C7DE3752BEFA1020026923F /* ActivityView.swift */,
+				3C7DE3792BEFCDF50026923F /* ActivityViewModel.swift */,
+				3C7DE37D2BEFDE330026923F /* Components */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
+		3C7DE37D2BEFDE330026923F /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				3C7DE3772BEFA7C50026923F /* CircularProgressView.swift */,
+				3C7DE37B2BEFDC640026923F /* FormattedTimeText.swift */,
+				3C7DE37E2BEFDE4F0026923F /* ActivitySelector.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		3C7DE3842BF0AAEC0026923F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3C7DE3852BF0AAF70026923F /* Activity.swift */,
+				3C7DE38B2BF0B2EB0026923F /* GoalType.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		3CD588D32BE7E2BF0073F8DD = {
@@ -149,6 +199,7 @@
 			children = (
 				3C7DE36C2BEF73F90026923F /* LifeTime.entitlements */,
 				3CD588DF2BE7E2BF0073F8DD /* LifeTimeApp.swift */,
+				3C7DE3842BF0AAEC0026923F /* Model */,
 				3C7DE32E2BEBFA470026923F /* Views */,
 				3C7DE3492BEEA5F70026923F /* Service */,
 				3C7DE3502BEEAE050026923F /* Helpers */,
@@ -254,11 +305,20 @@
 				3C7DE34B2BEEA6440026923F /* AuthService.swift in Sources */,
 				3C7DE3352BED159A0026923F /* SettingsView.swift in Sources */,
 				3C7DE3402BEE88E10026923F /* EmailSignInView.swift in Sources */,
+				3C7DE38C2BF0B2EB0026923F /* GoalType.swift in Sources */,
 				3CD588E22BE7E2BF0073F8DD /* ContentView.swift in Sources */,
 				3C7DE36E2BEF873F0026923F /* AuthViewModel.swift in Sources */,
+				3C7DE3862BF0AAF70026923F /* Activity.swift in Sources */,
+				3C7DE37C2BEFDC640026923F /* FormattedTimeText.swift in Sources */,
+				3C7DE37F2BEFDE4F0026923F /* ActivitySelector.swift in Sources */,
 				3CD588E02BE7E2BF0073F8DD /* LifeTimeApp.swift in Sources */,
+				3C7DE3882BF0AD1C0026923F /* Color+Hex.swift in Sources */,
+				3C7DE37A2BEFCDF50026923F /* ActivityViewModel.swift in Sources */,
+				3C7DE3762BEFA1020026923F /* ActivityView.swift in Sources */,
 				3C7DE3612BEEC86D0026923F /* AuthView.swift in Sources */,
+				3C7DE3782BEFA7C50026923F /* CircularProgressView.swift in Sources */,
 				3C7DE3482BEE9BE00026923F /* ActionButton.swift in Sources */,
+				3C7DE3812BF0A9120026923F /* TimeInterval+toHours.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
