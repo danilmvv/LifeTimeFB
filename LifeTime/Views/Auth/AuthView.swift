@@ -55,7 +55,7 @@ struct AuthView: View {
                 Spacer()
             }
         }
-        .navigationTitle("Создать аккаунт")
+        .navigationTitle("Привязать аккаунт")
         .sheet(isPresented: $showEmailSignIn) {
             EmailSignInView()
         }

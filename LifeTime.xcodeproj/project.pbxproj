@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3C56C93D2BF0BD0E000DD283 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56C93C2BF0BD0E000DD283 /* SettingsViewModel.swift */; };
+		3C56C93F2BF0C25B000DD283 /* DBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56C93E2BF0C25B000DD283 /* DBService.swift */; };
+		3C56C9412BF0C3F1000DD283 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56C9402BF0C3F1000DD283 /* Profile.swift */; };
+		3C56C9432BF0C4B8000DD283 /* Encodable+asDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56C9422BF0C4B8000DD283 /* Encodable+asDictionary.swift */; };
 		3C7DE3352BED159A0026923F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE3342BED159A0026923F /* SettingsView.swift */; };
 		3C7DE33E2BEE6CAE0026923F /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE33D2BEE6CAE0026923F /* AuthTextField.swift */; };
 		3C7DE3402BEE88E10026923F /* EmailSignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE33F2BEE88E10026923F /* EmailSignInView.swift */; };
@@ -40,6 +43,9 @@
 
 /* Begin PBXFileReference section */
 		3C56C93C2BF0BD0E000DD283 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		3C56C93E2BF0C25B000DD283 /* DBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBService.swift; sourceTree = "<group>"; };
+		3C56C9402BF0C3F1000DD283 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		3C56C9422BF0C4B8000DD283 /* Encodable+asDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+asDictionary.swift"; sourceTree = "<group>"; };
 		3C7DE3342BED159A0026923F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		3C7DE33D2BEE6CAE0026923F /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
 		3C7DE33F2BEE88E10026923F /* EmailSignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignInView.swift; sourceTree = "<group>"; };
@@ -83,6 +89,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C56C9442BF0C4D1000DD283 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				3C7DE3512BEEAE190026923F /* Validator.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		3C56C9452BF0C4DD000DD283 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3C7DE3722BEF8C4C0026923F /* View+Styles.swift */,
+				3C7DE3802BF0A9120026923F /* TimeInterval+toHours.swift */,
+				3C7DE3872BF0AD1B0026923F /* Color+Hex.swift */,
+				3C56C9422BF0C4B8000DD283 /* Encodable+asDictionary.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3C56C9462BF0CA5F000DD283 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				3C7DE33D2BEE6CAE0026923F /* AuthTextField.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		3C7DE32E2BEBFA470026923F /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +134,7 @@
 				3C7DE3602BEEC86D0026923F /* AuthView.swift */,
 				3C7DE36D2BEF873F0026923F /* AuthViewModel.swift */,
 				3C7DE34F2BEEAB7C0026923F /* EmailSignIn */,
+				3C56C9462BF0CA5F000DD283 /* Components */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -109,7 +143,6 @@
 			isa = PBXGroup;
 			children = (
 				3C7DE3472BEE9BE00026923F /* ActionButton.swift */,
-				3C7DE33D2BEE6CAE0026923F /* AuthTextField.swift */,
 				3C7DE36A2BEF60F70026923F /* CustomTextField.swift */,
 			);
 			path = Components;
@@ -119,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				3C7DE34A2BEEA6440026923F /* AuthService.swift */,
+				3C56C93E2BF0C25B000DD283 /* DBService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -135,10 +169,8 @@
 		3C7DE3502BEEAE050026923F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				3C7DE3512BEEAE190026923F /* Validator.swift */,
-				3C7DE3722BEF8C4C0026923F /* View+Styles.swift */,
-				3C7DE3802BF0A9120026923F /* TimeInterval+toHours.swift */,
-				3C7DE3872BF0AD1B0026923F /* Color+Hex.swift */,
+				3C56C9452BF0C4DD000DD283 /* Extensions */,
+				3C56C9442BF0C4D1000DD283 /* Utilities */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -177,6 +209,7 @@
 			children = (
 				3C7DE3852BF0AAF70026923F /* Activity.swift */,
 				3C7DE38B2BF0B2EB0026923F /* GoalType.swift */,
+				3C56C9402BF0C3F1000DD283 /* Profile.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -316,9 +349,12 @@
 				3C7DE37C2BEFDC640026923F /* FormattedTimeText.swift in Sources */,
 				3C7DE37F2BEFDE4F0026923F /* ActivitySelector.swift in Sources */,
 				3CD588E02BE7E2BF0073F8DD /* LifeTimeApp.swift in Sources */,
+				3C56C9412BF0C3F1000DD283 /* Profile.swift in Sources */,
 				3C7DE3882BF0AD1C0026923F /* Color+Hex.swift in Sources */,
+				3C56C93F2BF0C25B000DD283 /* DBService.swift in Sources */,
 				3C7DE37A2BEFCDF50026923F /* ActivityViewModel.swift in Sources */,
 				3C7DE3762BEFA1020026923F /* ActivityView.swift in Sources */,
+				3C56C9432BF0C4B8000DD283 /* Encodable+asDictionary.swift in Sources */,
 				3C7DE3612BEEC86D0026923F /* AuthView.swift in Sources */,
 				3C7DE3782BEFA7C50026923F /* CircularProgressView.swift in Sources */,
 				3C7DE3482BEE9BE00026923F /* ActionButton.swift in Sources */,

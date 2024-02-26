@@ -22,6 +22,16 @@ struct SettingsView: View {
                         .customTextStyle()
                     }
                     .padding()
+                    
+                    //TODO: Удалить кнопку
+                    Button {
+                        Task {
+                            await viewModel.signOut()
+                        }
+                    } label: {
+                        Text("Выйти")
+                            .foregroundStyle(Color.appRed)
+                    }
                 } else {
                     Text(authService.user?.email ?? "")
                         .customTextStyle()

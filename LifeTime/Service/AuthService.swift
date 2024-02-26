@@ -1,7 +1,10 @@
 import Foundation
 import AuthenticationServices
-import FirebaseAuth
 import CryptoKit
+
+import FirebaseAuth
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 enum AuthState {
     case authenticated // Анон
@@ -27,7 +30,8 @@ class AuthService {
     }
     
     func signUp(email: String, password: String) async throws {
-        try await Auth.auth().createUser(withEmail: email, password: password)
+        let result = try await Auth.auth().createUser(withEmail: email, password: password)
+        try await insertUserRecord(user: result.user)
     }
     
     func signIn(email: String, password: String) async throws {
@@ -35,7 +39,8 @@ class AuthService {
     }
     
     func anonymousSignIn() async throws {
-        try await Auth.auth().signInAnonymously()
+        let result = try await Auth.auth().signInAnonymously()
+        try await insertUserRecord(user: result.user)
     }
     
     func linkEmail(email: String, password: String) async throws -> AuthDataResult? {
@@ -46,6 +51,8 @@ class AuthService {
         }
         
         let result = try await user.link(with: credential)
+        updateUserRecord(user: user)
+
         updateState(user: result.user)
         
         return result
@@ -70,6 +77,36 @@ class AuthService {
     var isSignedIn: Bool {
         return Auth.auth().currentUser != nil
     }
+}
+
+// Firestore
+extension AuthService {
+    private func insertUserRecord(user: User) async throws {
+        let newUser = Profile(
+            id: user.uid,
+            email: user.email,
+            joined: Date().timeIntervalSince1970
+        )
+        
+        let db = Firestore.firestore()
+        
+        try await db.collection("users")
+            .document(user.uid)
+            .setData(newUser.asDictionary())
+    }
+    
+    private func updateUserRecord(user: User) {
+        let userRef = Firestore.firestore().collection("users").document(user.uid)
+
+        userRef.updateData(["email": user.email!]) { error in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                print("Email updated in Firestore")
+            }
+        }
+    }
+    
 }
 
 // Apple
