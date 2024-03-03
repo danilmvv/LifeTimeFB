@@ -2,7 +2,7 @@ import SwiftUI
 
 enum Tab: String {
     case activity = "Активность"
-    case charts = "Статистика"
+    case stats = "Статистика"
     case history = "Журнал"
     case settings = "Настройки"
     
@@ -11,7 +11,7 @@ enum Tab: String {
         switch self {
         case .activity:
             Image(systemName: "clock")
-        case .charts:
+        case .stats:
             Image(systemName: "chart.bar.xaxis")
         case .history:
             Image(systemName: "list.clipboard")
@@ -36,6 +36,14 @@ struct ContentView: View {
                         ActivityView()
                             .tag(Tab.activity)
                             .tabItem { Tab.activity.tabContent }
+                        
+                        StatsView()
+                            .tag(Tab.stats)
+                            .tabItem { Tab.stats.tabContent }
+                        
+                        HistoryView()
+                            .tag(Tab.history)
+                            .tabItem { Tab.history.tabContent }
                         
                         SettingsView()
                             .tag(Tab.settings)

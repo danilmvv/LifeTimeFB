@@ -23,10 +23,12 @@ struct CircularProgressView: View {
                 if showTime {
                     FormattedTimeText(time: $elapsedTime)
                         .foregroundStyle(.textPrimary)
+                        .transition(.scale)
                 } else {
                     Image(systemName: "play.fill")
                         .foregroundStyle(.textPrimary)
                         .font(.system(size: 96))
+//                        .transition(.scale)
                 }
             }
         }

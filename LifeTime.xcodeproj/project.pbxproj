@@ -8,13 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		3C56C93D2BF0BD0E000DD283 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56C93C2BF0BD0E000DD283 /* SettingsViewModel.swift */; };
-		3C56C93F2BF0C25B000DD283 /* DBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56C93E2BF0C25B000DD283 /* DBService.swift */; };
 		3C56C9412BF0C3F1000DD283 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56C9402BF0C3F1000DD283 /* Profile.swift */; };
 		3C56C9432BF0C4B8000DD283 /* Encodable+asDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56C9422BF0C4B8000DD283 /* Encodable+asDictionary.swift */; };
+		3C56C9482BF0DDE0000DD283 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56C9472BF0DDE0000DD283 /* Session.swift */; };
+		3C56C94A2BF0E649000DD283 /* ActivityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56C9492BF0E649000DD283 /* ActivityListView.swift */; };
+		3C56C94C2BF0EA7C000DD283 /* DBService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56C94B2BF0EA7C000DD283 /* DBService.swift */; };
+		3C56C94E2BF0EAC7000DD283 /* ActivityInfoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56C94D2BF0EAC7000DD283 /* ActivityInfoCard.swift */; };
+		3C56C9502BF0FC04000DD283 /* SecondaryAppButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56C94F2BF0FC04000DD283 /* SecondaryAppButton.swift */; };
+		3C56C9522BF0FDC3000DD283 /* AddActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56C9512BF0FDC3000DD283 /* AddActivityView.swift */; };
+		3C56C9562BF106E8000DD283 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56C9552BF106E8000DD283 /* StatsView.swift */; };
+		3C56C9582BF106F0000DD283 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56C9572BF106EF000DD283 /* HistoryView.swift */; };
 		3C7DE3352BED159A0026923F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE3342BED159A0026923F /* SettingsView.swift */; };
 		3C7DE33E2BEE6CAE0026923F /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE33D2BEE6CAE0026923F /* AuthTextField.swift */; };
 		3C7DE3402BEE88E10026923F /* EmailSignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE33F2BEE88E10026923F /* EmailSignInView.swift */; };
-		3C7DE3482BEE9BE00026923F /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE3472BEE9BE00026923F /* ActionButton.swift */; };
+		3C7DE3482BEE9BE00026923F /* AppButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE3472BEE9BE00026923F /* AppButton.swift */; };
 		3C7DE34B2BEEA6440026923F /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE34A2BEEA6440026923F /* AuthService.swift */; };
 		3C7DE34D2BEEA9530026923F /* EmailSignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE34C2BEEA9530026923F /* EmailSignInViewModel.swift */; };
 		3C7DE3522BEEAE190026923F /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE3512BEEAE190026923F /* Validator.swift */; };
@@ -43,13 +50,20 @@
 
 /* Begin PBXFileReference section */
 		3C56C93C2BF0BD0E000DD283 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
-		3C56C93E2BF0C25B000DD283 /* DBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBService.swift; sourceTree = "<group>"; };
 		3C56C9402BF0C3F1000DD283 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		3C56C9422BF0C4B8000DD283 /* Encodable+asDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+asDictionary.swift"; sourceTree = "<group>"; };
+		3C56C9472BF0DDE0000DD283 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		3C56C9492BF0E649000DD283 /* ActivityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListView.swift; sourceTree = "<group>"; };
+		3C56C94B2BF0EA7C000DD283 /* DBService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBService.swift; sourceTree = "<group>"; };
+		3C56C94D2BF0EAC7000DD283 /* ActivityInfoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityInfoCard.swift; sourceTree = "<group>"; };
+		3C56C94F2BF0FC04000DD283 /* SecondaryAppButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryAppButton.swift; sourceTree = "<group>"; };
+		3C56C9512BF0FDC3000DD283 /* AddActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityView.swift; sourceTree = "<group>"; };
+		3C56C9552BF106E8000DD283 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
+		3C56C9572BF106EF000DD283 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		3C7DE3342BED159A0026923F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		3C7DE33D2BEE6CAE0026923F /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
 		3C7DE33F2BEE88E10026923F /* EmailSignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignInView.swift; sourceTree = "<group>"; };
-		3C7DE3472BEE9BE00026923F /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
+		3C7DE3472BEE9BE00026923F /* AppButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppButton.swift; sourceTree = "<group>"; };
 		3C7DE34A2BEEA6440026923F /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		3C7DE34C2BEEA9530026923F /* EmailSignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignInViewModel.swift; sourceTree = "<group>"; };
 		3C7DE3512BEEAE190026923F /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
@@ -116,11 +130,37 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		3C56C9532BF106AC000DD283 /* Stats */ = {
+			isa = PBXGroup;
+			children = (
+				3C56C9552BF106E8000DD283 /* StatsView.swift */,
+			);
+			path = Stats;
+			sourceTree = "<group>";
+		};
+		3C56C9542BF106B7000DD283 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				3C56C9572BF106EF000DD283 /* HistoryView.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		3C56C9592BF109F6000DD283 /* AddActivity */ = {
+			isa = PBXGroup;
+			children = (
+				3C56C9512BF0FDC3000DD283 /* AddActivityView.swift */,
+			);
+			path = AddActivity;
+			sourceTree = "<group>";
+		};
 		3C7DE32E2BEBFA470026923F /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				3CD588E12BE7E2BF0073F8DD /* ContentView.swift */,
 				3C7DE3742BEFA0F10026923F /* Activity */,
+				3C56C9532BF106AC000DD283 /* Stats */,
+				3C56C9542BF106B7000DD283 /* History */,
 				3C7DE35F2BEEC8020026923F /* Settings */,
 				3C7DE3332BED15330026923F /* Auth */,
 				3C7DE3412BEE8C910026923F /* Components */,
@@ -142,7 +182,8 @@
 		3C7DE3412BEE8C910026923F /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				3C7DE3472BEE9BE00026923F /* ActionButton.swift */,
+				3C7DE3472BEE9BE00026923F /* AppButton.swift */,
+				3C56C94F2BF0FC04000DD283 /* SecondaryAppButton.swift */,
 				3C7DE36A2BEF60F70026923F /* CustomTextField.swift */,
 			);
 			path = Components;
@@ -152,7 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				3C7DE34A2BEEA6440026923F /* AuthService.swift */,
-				3C56C93E2BF0C25B000DD283 /* DBService.swift */,
+				3C56C94B2BF0EA7C000DD283 /* DBService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -189,6 +230,7 @@
 			children = (
 				3C7DE3752BEFA1020026923F /* ActivityView.swift */,
 				3C7DE3792BEFCDF50026923F /* ActivityViewModel.swift */,
+				3C56C9592BF109F6000DD283 /* AddActivity */,
 				3C7DE37D2BEFDE330026923F /* Components */,
 			);
 			path = Activity;
@@ -200,6 +242,8 @@
 				3C7DE3772BEFA7C50026923F /* CircularProgressView.swift */,
 				3C7DE37B2BEFDC640026923F /* FormattedTimeText.swift */,
 				3C7DE37E2BEFDE4F0026923F /* ActivitySelector.swift */,
+				3C56C94D2BF0EAC7000DD283 /* ActivityInfoCard.swift */,
+				3C56C9492BF0E649000DD283 /* ActivityListView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -210,6 +254,7 @@
 				3C7DE3852BF0AAF70026923F /* Activity.swift */,
 				3C7DE38B2BF0B2EB0026923F /* GoalType.swift */,
 				3C56C9402BF0C3F1000DD283 /* Profile.swift */,
+				3C56C9472BF0DDE0000DD283 /* Session.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -337,27 +382,34 @@
 				3C56C93D2BF0BD0E000DD283 /* SettingsViewModel.swift in Sources */,
 				3C7DE3732BEF8C4C0026923F /* View+Styles.swift in Sources */,
 				3C7DE36B2BEF60F70026923F /* CustomTextField.swift in Sources */,
+				3C56C9502BF0FC04000DD283 /* SecondaryAppButton.swift in Sources */,
 				3C7DE3522BEEAE190026923F /* Validator.swift in Sources */,
 				3C7DE34D2BEEA9530026923F /* EmailSignInViewModel.swift in Sources */,
+				3C56C94A2BF0E649000DD283 /* ActivityListView.swift in Sources */,
 				3C7DE34B2BEEA6440026923F /* AuthService.swift in Sources */,
 				3C7DE3352BED159A0026923F /* SettingsView.swift in Sources */,
 				3C7DE3402BEE88E10026923F /* EmailSignInView.swift in Sources */,
+				3C56C94E2BF0EAC7000DD283 /* ActivityInfoCard.swift in Sources */,
 				3C7DE38C2BF0B2EB0026923F /* GoalType.swift in Sources */,
 				3CD588E22BE7E2BF0073F8DD /* ContentView.swift in Sources */,
 				3C7DE36E2BEF873F0026923F /* AuthViewModel.swift in Sources */,
 				3C7DE3862BF0AAF70026923F /* Activity.swift in Sources */,
+				3C56C9582BF106F0000DD283 /* HistoryView.swift in Sources */,
 				3C7DE37C2BEFDC640026923F /* FormattedTimeText.swift in Sources */,
+				3C56C9522BF0FDC3000DD283 /* AddActivityView.swift in Sources */,
 				3C7DE37F2BEFDE4F0026923F /* ActivitySelector.swift in Sources */,
 				3CD588E02BE7E2BF0073F8DD /* LifeTimeApp.swift in Sources */,
+				3C56C9562BF106E8000DD283 /* StatsView.swift in Sources */,
+				3C56C94C2BF0EA7C000DD283 /* DBService.swift in Sources */,
 				3C56C9412BF0C3F1000DD283 /* Profile.swift in Sources */,
+				3C56C9482BF0DDE0000DD283 /* Session.swift in Sources */,
 				3C7DE3882BF0AD1C0026923F /* Color+Hex.swift in Sources */,
-				3C56C93F2BF0C25B000DD283 /* DBService.swift in Sources */,
 				3C7DE37A2BEFCDF50026923F /* ActivityViewModel.swift in Sources */,
 				3C7DE3762BEFA1020026923F /* ActivityView.swift in Sources */,
 				3C56C9432BF0C4B8000DD283 /* Encodable+asDictionary.swift in Sources */,
 				3C7DE3612BEEC86D0026923F /* AuthView.swift in Sources */,
 				3C7DE3782BEFA7C50026923F /* CircularProgressView.swift in Sources */,
-				3C7DE3482BEE9BE00026923F /* ActionButton.swift in Sources */,
+				3C7DE3482BEE9BE00026923F /* AppButton.swift in Sources */,
 				3C7DE3812BF0A9120026923F /* TimeInterval+toHours.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

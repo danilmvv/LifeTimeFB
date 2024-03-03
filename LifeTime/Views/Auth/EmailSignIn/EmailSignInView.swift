@@ -20,7 +20,7 @@ struct EmailSignInView: View {
                     
                     AuthTextField(placeholder: "Email", text: $viewModel.email)
                     AuthTextField(placeholder: "Пароль", text: $viewModel.password, isSecure: true)
-                    ActionButton(title: "Готово") {
+                    AppButton(title: "Готово") {
                         Task {
                             if authService.user != nil {
                                 print("Link")

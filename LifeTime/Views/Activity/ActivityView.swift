@@ -2,7 +2,12 @@ import SwiftUI
 
 struct ActivityView: View {
     @State private var viewModel = ViewModel()
-    let activity: Activity = Activity(id: "", title: "", dateAdded: "", totalTime: 0.0, goal: 0.0, goalType: "", goalCompleted: 0, color: "")
+    @State private var selectedIndex: Int = 0
+    let activities: [Activity] = [
+
+    ]
+    
+    @State private var isSheetPresented = false
     
     var body: some View {
         NavigationStack {
@@ -24,13 +29,32 @@ struct ActivityView: View {
                             viewModel.toggleTimer()
                         }
                     }
+                    .sensoryFeedback(
+                        viewModel.isRunning
+                        ? .impact(flexibility: .solid)  // Стоп
+                        : .impact(flexibility: .soft),  // Старт
+                        
+                        trigger: viewModel.isRunning
+                    )
                     
                     Text("\(viewModel.elapsedTime.toHours(decimals: 3)) ч.")
                         .padding(.top)
                     
                     Spacer()
-                    ActivitySelector(activity: Activity(id: "", title: "Activity", dateAdded: "", totalTime: 0.0, goal: 0.0, goalType: "", goalCompleted: 0, color: "#2ED157"))
-                        .padding()
+                    ActivitySelector(selectedIndex: $selectedIndex, activities: activities)
+                        .padding(.vertical)
+                        .padding(.horizontal, 25)
+                        .onTapGesture {
+                            isSheetPresented.toggle()
+                        }
+                }
+            }
+            .sheet(isPresented: $isSheetPresented) {
+                if activities.isEmpty {
+                    AddActivityView()
+                } else {
+                    ActivityListView(selectedIndex: $selectedIndex, activities: activities)
+                        .presentationDragIndicator(.visible)
                 }
             }
         }
