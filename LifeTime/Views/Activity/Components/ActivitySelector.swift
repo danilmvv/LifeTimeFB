@@ -50,7 +50,6 @@ struct ActivitySelector: View {
                     : Color.fromHexString(activities[selectedIndex].color)
                 )
         }
-        .frame(maxWidth: .infinity)
     }
     
     func selectPrevious() {

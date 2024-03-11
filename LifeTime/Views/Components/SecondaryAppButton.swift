@@ -15,7 +15,7 @@ struct SecondaryAppButton: View {
                 .frame(maxWidth: .infinity)
                 .background {
                     RoundedRectangle(cornerRadius: 10)
-                        .fill(.thinMaterial)
+                        .fill(.ultraThinMaterial)
                 }
         }
     }

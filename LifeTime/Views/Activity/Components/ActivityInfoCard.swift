@@ -8,7 +8,7 @@ struct ActivityInfoCard: View {
             VStack(alignment: .leading) {
                 Text(activity.title)
                     .font(.title3)
-                    .bold()
+                    .fontWeight(.bold)
                 
                 Text("C \(activity.dateAdded)")
                     .font(.subheadline)

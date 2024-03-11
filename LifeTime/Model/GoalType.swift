@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 
 enum GoalType: String, CaseIterable {
-    case daily = "в День"
-    case weekly = "в Неделю"
-    case monthly = "в Месяц"
+    case daily = "в день"
+    case weekly = "в неделю"
+    case monthly = "в месяц"
 }

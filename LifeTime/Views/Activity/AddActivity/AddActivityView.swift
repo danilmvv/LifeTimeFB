@@ -1,11 +1,118 @@
 import SwiftUI
 
 struct AddActivityView: View {
+    @State private var viewModel = ViewModel()
+    @State private var selectedDays: [String] = []
+    
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            Color.backgroundPrimary
+                .ignoresSafeArea()
+            
+            VStack(spacing: 16) {
+                Text("Новая активность")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .padding(.vertical)
+                
+                CustomTextField(placeholder: "Название", text: $viewModel.title)
+                
+                HStack(spacing: 16) {
+                    CustomNumberField(placeholder: "Цель", number: $viewModel.goal, unit: "ч.")
+                        .frame(maxWidth: .infinity)
+                    
+                    Menu {
+                        Picker("", selection: $viewModel.goalType) {
+                            ForEach(GoalType.allCases, id: \.self) {
+                                Text($0.rawValue)
+                            }
+                        }
+                    } label: {
+                        HStack {
+                            Text(viewModel.goalType.rawValue)
+                                .fontWeight(.bold)
+                            
+                            Image(systemName: "chevron.up.chevron.down")
+                                .font(.system(size: 16))
+                        }
+                        .padding()
+                        .frame(maxWidth: .infinity, maxHeight: 50)
+                        .background {
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(.ultraThinMaterial)
+                        }
+                    }
+                }
+                
+                ColorPicker("Цвет", selection: $viewModel.color)
+                    .fontWeight(.bold)
+                    .padding(.horizontal)
+                    .padding(.vertical, 12)
+                    .frame(maxWidth: .infinity, maxHeight: 50)
+                    .background {
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(.ultraThinMaterial)
+                    }
+                
+                Toggle("Уведомления", isOn: $viewModel.notificationsEnabled)
+                    .fontWeight(.bold)
+                    .padding(.horizontal)
+                    .padding(.vertical, 12)
+                    .frame(maxWidth: .infinity, maxHeight: 50)
+                    .background {
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(.ultraThinMaterial)
+                    }
+                
+                VStack(spacing: 16) {
+                    HStack {
+                        Text("Напомнить в")
+                            .fontWeight(.bold)
+                        
+                        Spacer()
+                        
+                        Text(viewModel.notificationTime)
+                            .fontWeight(.bold)
+                            .foregroundStyle(.appAccent)
+                    }
+                    .padding()
+                    .frame(maxHeight: 50)
+                    .background {
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(.ultraThinMaterial)
+                    }
+                    .allowsHitTesting(viewModel.notificationsEnabled)
+                    
+                    DaysPicker(selectedDays: $viewModel.notificationDays)
+                        .allowsHitTesting(viewModel.notificationsEnabled)
+                }
+                .opacity(viewModel.notificationsEnabled ? 1 : 0.5)
+                
+                VStack(spacing: 32) {
+                    AppButton(title: "Добавить активность") {
+                        //
+                        dismiss()
+                    }
+                    
+                    Button {
+                        dismiss()
+                    } label: {
+                        Text("Отменить")
+                            .fontWeight(.bold)
+                            .foregroundStyle(.textSecondary)
+                    }
+                }
+                .padding(.top)
+                
+                Spacer()
+            }
+            .padding()
+        }
     }
+    
+    
 }
 
 #Preview {

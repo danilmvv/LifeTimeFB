@@ -18,6 +18,9 @@
 		3C56C9522BF0FDC3000DD283 /* AddActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56C9512BF0FDC3000DD283 /* AddActivityView.swift */; };
 		3C56C9562BF106E8000DD283 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56C9552BF106E8000DD283 /* StatsView.swift */; };
 		3C56C9582BF106F0000DD283 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56C9572BF106EF000DD283 /* HistoryView.swift */; };
+		3C56C95B2BF11317000DD283 /* AddActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56C95A2BF11317000DD283 /* AddActivityViewModel.swift */; };
+		3C56C9662BF131C2000DD283 /* CustomNumberField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56C9652BF131C2000DD283 /* CustomNumberField.swift */; };
+		3C56C9682BF14488000DD283 /* DaysPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56C9672BF14488000DD283 /* DaysPicker.swift */; };
 		3C7DE3352BED159A0026923F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE3342BED159A0026923F /* SettingsView.swift */; };
 		3C7DE33E2BEE6CAE0026923F /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE33D2BEE6CAE0026923F /* AuthTextField.swift */; };
 		3C7DE3402BEE88E10026923F /* EmailSignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE33F2BEE88E10026923F /* EmailSignInView.swift */; };
@@ -60,6 +63,9 @@
 		3C56C9512BF0FDC3000DD283 /* AddActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityView.swift; sourceTree = "<group>"; };
 		3C56C9552BF106E8000DD283 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		3C56C9572BF106EF000DD283 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		3C56C95A2BF11317000DD283 /* AddActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityViewModel.swift; sourceTree = "<group>"; };
+		3C56C9652BF131C2000DD283 /* CustomNumberField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNumberField.swift; sourceTree = "<group>"; };
+		3C56C9672BF14488000DD283 /* DaysPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysPicker.swift; sourceTree = "<group>"; };
 		3C7DE3342BED159A0026923F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		3C7DE33D2BEE6CAE0026923F /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
 		3C7DE33F2BEE88E10026923F /* EmailSignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignInView.swift; sourceTree = "<group>"; };
@@ -150,8 +156,17 @@
 			isa = PBXGroup;
 			children = (
 				3C56C9512BF0FDC3000DD283 /* AddActivityView.swift */,
+				3C56C95A2BF11317000DD283 /* AddActivityViewModel.swift */,
 			);
 			path = AddActivity;
+			sourceTree = "<group>";
+		};
+		3C56C95C2BF116C1000DD283 /* ActivityList */ = {
+			isa = PBXGroup;
+			children = (
+				3C56C9492BF0E649000DD283 /* ActivityListView.swift */,
+			);
+			path = ActivityList;
 			sourceTree = "<group>";
 		};
 		3C7DE32E2BEBFA470026923F /* Views */ = {
@@ -185,6 +200,7 @@
 				3C7DE3472BEE9BE00026923F /* AppButton.swift */,
 				3C56C94F2BF0FC04000DD283 /* SecondaryAppButton.swift */,
 				3C7DE36A2BEF60F70026923F /* CustomTextField.swift */,
+				3C56C9652BF131C2000DD283 /* CustomNumberField.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -230,6 +246,7 @@
 			children = (
 				3C7DE3752BEFA1020026923F /* ActivityView.swift */,
 				3C7DE3792BEFCDF50026923F /* ActivityViewModel.swift */,
+				3C56C95C2BF116C1000DD283 /* ActivityList */,
 				3C56C9592BF109F6000DD283 /* AddActivity */,
 				3C7DE37D2BEFDE330026923F /* Components */,
 			);
@@ -239,11 +256,11 @@
 		3C7DE37D2BEFDE330026923F /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				3C7DE3772BEFA7C50026923F /* CircularProgressView.swift */,
-				3C7DE37B2BEFDC640026923F /* FormattedTimeText.swift */,
 				3C7DE37E2BEFDE4F0026923F /* ActivitySelector.swift */,
 				3C56C94D2BF0EAC7000DD283 /* ActivityInfoCard.swift */,
-				3C56C9492BF0E649000DD283 /* ActivityListView.swift */,
+				3C7DE3772BEFA7C50026923F /* CircularProgressView.swift */,
+				3C7DE37B2BEFDC640026923F /* FormattedTimeText.swift */,
+				3C56C9672BF14488000DD283 /* DaysPicker.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -399,6 +416,7 @@
 				3C56C9522BF0FDC3000DD283 /* AddActivityView.swift in Sources */,
 				3C7DE37F2BEFDE4F0026923F /* ActivitySelector.swift in Sources */,
 				3CD588E02BE7E2BF0073F8DD /* LifeTimeApp.swift in Sources */,
+				3C56C9662BF131C2000DD283 /* CustomNumberField.swift in Sources */,
 				3C56C9562BF106E8000DD283 /* StatsView.swift in Sources */,
 				3C56C94C2BF0EA7C000DD283 /* DBService.swift in Sources */,
 				3C56C9412BF0C3F1000DD283 /* Profile.swift in Sources */,
@@ -409,7 +427,9 @@
 				3C56C9432BF0C4B8000DD283 /* Encodable+asDictionary.swift in Sources */,
 				3C7DE3612BEEC86D0026923F /* AuthView.swift in Sources */,
 				3C7DE3782BEFA7C50026923F /* CircularProgressView.swift in Sources */,
+				3C56C95B2BF11317000DD283 /* AddActivityViewModel.swift in Sources */,
 				3C7DE3482BEE9BE00026923F /* AppButton.swift in Sources */,
+				3C56C9682BF14488000DD283 /* DaysPicker.swift in Sources */,
 				3C7DE3812BF0A9120026923F /* TimeInterval+toHours.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

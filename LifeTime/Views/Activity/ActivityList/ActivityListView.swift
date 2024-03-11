@@ -8,9 +8,17 @@ struct ActivityListView: View {
     @State private var showAddActivityView: Bool = false
     
     var body: some View {
-        NavigationStack {
+        ZStack {
+            Color.backgroundPrimary
+                .ignoresSafeArea()
+            
             ScrollView {
-                VStack(spacing: 18) {
+                VStack(spacing: 16) {
+                    Text("Выберите активность")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .padding(.vertical)
+                    
                     ForEach(0..<activities.count, id: \.self) { index in
                         ActivityInfoCard(activity: activities[index])
                             .padding(.horizontal)
@@ -27,10 +35,8 @@ struct ActivityListView: View {
                     Spacer()
                 }
                 .padding(.top)
-                .navigationTitle("Выберите активность")
-                .navigationBarTitleDisplayMode(.inline)
             }
-            .sheet(isPresented: $showAddActivityView){
+            .fullScreenCover(isPresented: $showAddActivityView) {
                 AddActivityView()
             }
         }
