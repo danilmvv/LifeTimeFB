@@ -10,7 +10,7 @@ struct ActivityInfoCard: View {
                     .font(.title3)
                     .fontWeight(.bold)
                 
-                Text("C \(activity.dateAdded)")
+                Text("C \(DateConverter.shared.getReadableDateString(activity.dateAdded))")
                     .font(.subheadline)
                     .fontWeight(.light)
             }
@@ -26,5 +26,5 @@ struct ActivityInfoCard: View {
 }
 
 #Preview {
-    ActivityInfoCard(activity: Activity(id: "1", title: "Гитара", dateAdded: "15 Января 2024", totalTime: 23.5, goal: 0.0, goalType: "", goalCompleted: 0, color: "#21B44A"))
+    ActivityInfoCard(activity: Activity(id: "1", title: "Гитара", dateAdded: "2024-05-14T18:36:00+05:00", totalTime: 23.5, goal: 0.0, goalType: "", goalCompletedCount: 0, color: "#21B44A", notificationsEnabled: false))
 }

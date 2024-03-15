@@ -1,13 +1,9 @@
 import SwiftUI
 
 struct ActivityView: View {
+    @Environment(DBService.self) private var dataService
     @State private var viewModel = ViewModel()
     @State private var selectedIndex: Int = 0
-    let activities: [Activity] = [
-        Activity(id: "", title: "Гитара", dateAdded: "15 Января 2024", totalTime: 0.0, goal: 0.0, goalType: "", goalCompleted: 0, color: "#21B44A"),
-        Activity(id: "", title: "Pet-проект", dateAdded: "15 Января 2024", totalTime: 0, goal: 0, goalType: "", goalCompleted: 0, color: "#275FF4"),
-        Activity(id: "", title: "Чтение", dateAdded: "15 Января 2024", totalTime: 0, goal: 0, goalType: "", goalCompleted: 0, color: "#B92D5D")
-    ]
     
     @State private var isSheetPresented = false
     
@@ -46,7 +42,7 @@ struct ActivityView: View {
                     .foregroundStyle(.textSecondary)
                     
                     Spacer()
-                    ActivitySelector(selectedIndex: $selectedIndex, activities: activities)
+                    ActivitySelector(selectedIndex: $selectedIndex)
                         .padding(.top)
                         .padding(.bottom, 25)
                         .padding(.horizontal, 25)
@@ -57,11 +53,20 @@ struct ActivityView: View {
                 }
             }
             .navigationTitle("Активность")
-            .sheet(isPresented: $isSheetPresented) {
-                if activities.isEmpty {
+            .sheet(isPresented: $isSheetPresented, onDismiss: {
+                Task {
+                    do {
+                        try await dataService.getData()
+                    } catch {
+                        print(error)
+                    }
+                }
+            }) {
+                if dataService.activities.isEmpty {
                     AddActivityView()
+                        .presentationDragIndicator(.visible)
                 } else {
-                    ActivityListView(selectedIndex: $selectedIndex, activities: activities)
+                    ActivityListView(selectedIndex: $selectedIndex)
                         .presentationDragIndicator(.visible)
                 }
             }
@@ -72,4 +77,5 @@ struct ActivityView: View {
 
 #Preview {
     ActivityView()
+        .environment(DBService())
 }

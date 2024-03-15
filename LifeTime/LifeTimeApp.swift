@@ -3,6 +3,7 @@ import FirebaseCore
 
 @main
 struct LifeTimeApp: App {
+    @State private var dataService = DBService()
     
     init() {
         FirebaseApp.configure()
@@ -12,6 +13,7 @@ struct LifeTimeApp: App {
         WindowGroup {
             ContentView()
                 .preferredColorScheme(.dark)
+                .environment(dataService)
         }
     }
 }

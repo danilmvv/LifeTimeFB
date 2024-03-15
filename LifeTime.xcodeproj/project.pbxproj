@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C32FD2D2BF2906600BE484B /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C32FD2C2BF2906600BE484B /* DateConverter.swift */; };
+		3C32FD2F2BF38C5D00BE484B /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C32FD2E2BF38C5D00BE484B /* AuthView.swift */; };
 		3C56C93D2BF0BD0E000DD283 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56C93C2BF0BD0E000DD283 /* SettingsViewModel.swift */; };
 		3C56C9412BF0C3F1000DD283 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56C9402BF0C3F1000DD283 /* Profile.swift */; };
 		3C56C9432BF0C4B8000DD283 /* Encodable+asDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56C9422BF0C4B8000DD283 /* Encodable+asDictionary.swift */; };
@@ -28,9 +30,7 @@
 		3C7DE34B2BEEA6440026923F /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE34A2BEEA6440026923F /* AuthService.swift */; };
 		3C7DE34D2BEEA9530026923F /* EmailSignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE34C2BEEA9530026923F /* EmailSignInViewModel.swift */; };
 		3C7DE3522BEEAE190026923F /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE3512BEEAE190026923F /* Validator.swift */; };
-		3C7DE3612BEEC86D0026923F /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE3602BEEC86D0026923F /* AuthView.swift */; };
 		3C7DE36B2BEF60F70026923F /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE36A2BEF60F70026923F /* CustomTextField.swift */; };
-		3C7DE36E2BEF873F0026923F /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE36D2BEF873F0026923F /* AuthViewModel.swift */; };
 		3C7DE3732BEF8C4C0026923F /* View+Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE3722BEF8C4C0026923F /* View+Styles.swift */; };
 		3C7DE3762BEFA1020026923F /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE3752BEFA1020026923F /* ActivityView.swift */; };
 		3C7DE3782BEFA7C50026923F /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C7DE3772BEFA7C50026923F /* CircularProgressView.swift */; };
@@ -52,6 +52,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C32FD2C2BF2906600BE484B /* DateConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConverter.swift; sourceTree = "<group>"; };
+		3C32FD2E2BF38C5D00BE484B /* AuthView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		3C56C93C2BF0BD0E000DD283 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		3C56C9402BF0C3F1000DD283 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		3C56C9422BF0C4B8000DD283 /* Encodable+asDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+asDictionary.swift"; sourceTree = "<group>"; };
@@ -73,10 +75,8 @@
 		3C7DE34A2BEEA6440026923F /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		3C7DE34C2BEEA9530026923F /* EmailSignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSignInViewModel.swift; sourceTree = "<group>"; };
 		3C7DE3512BEEAE190026923F /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
-		3C7DE3602BEEC86D0026923F /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		3C7DE36A2BEF60F70026923F /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		3C7DE36C2BEF73F90026923F /* LifeTime.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LifeTime.entitlements; sourceTree = "<group>"; };
-		3C7DE36D2BEF873F0026923F /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		3C7DE3722BEF8C4C0026923F /* View+Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Styles.swift"; sourceTree = "<group>"; };
 		3C7DE3752BEFA1020026923F /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		3C7DE3772BEFA7C50026923F /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
@@ -113,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				3C7DE3512BEEAE190026923F /* Validator.swift */,
+				3C32FD2C2BF2906600BE484B /* DateConverter.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -186,8 +187,7 @@
 		3C7DE3332BED15330026923F /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				3C7DE3602BEEC86D0026923F /* AuthView.swift */,
-				3C7DE36D2BEF873F0026923F /* AuthViewModel.swift */,
+				3C32FD2E2BF38C5D00BE484B /* AuthView.swift */,
 				3C7DE34F2BEEAB7C0026923F /* EmailSignIn */,
 				3C56C9462BF0CA5F000DD283 /* Components */,
 			);
@@ -269,9 +269,9 @@
 			isa = PBXGroup;
 			children = (
 				3C7DE3852BF0AAF70026923F /* Activity.swift */,
+				3C56C9472BF0DDE0000DD283 /* Session.swift */,
 				3C7DE38B2BF0B2EB0026923F /* GoalType.swift */,
 				3C56C9402BF0C3F1000DD283 /* Profile.swift */,
-				3C56C9472BF0DDE0000DD283 /* Session.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -399,6 +399,7 @@
 				3C56C93D2BF0BD0E000DD283 /* SettingsViewModel.swift in Sources */,
 				3C7DE3732BEF8C4C0026923F /* View+Styles.swift in Sources */,
 				3C7DE36B2BEF60F70026923F /* CustomTextField.swift in Sources */,
+				3C32FD2F2BF38C5D00BE484B /* AuthView.swift in Sources */,
 				3C56C9502BF0FC04000DD283 /* SecondaryAppButton.swift in Sources */,
 				3C7DE3522BEEAE190026923F /* Validator.swift in Sources */,
 				3C7DE34D2BEEA9530026923F /* EmailSignInViewModel.swift in Sources */,
@@ -409,11 +410,11 @@
 				3C56C94E2BF0EAC7000DD283 /* ActivityInfoCard.swift in Sources */,
 				3C7DE38C2BF0B2EB0026923F /* GoalType.swift in Sources */,
 				3CD588E22BE7E2BF0073F8DD /* ContentView.swift in Sources */,
-				3C7DE36E2BEF873F0026923F /* AuthViewModel.swift in Sources */,
 				3C7DE3862BF0AAF70026923F /* Activity.swift in Sources */,
 				3C56C9582BF106F0000DD283 /* HistoryView.swift in Sources */,
 				3C7DE37C2BEFDC640026923F /* FormattedTimeText.swift in Sources */,
 				3C56C9522BF0FDC3000DD283 /* AddActivityView.swift in Sources */,
+				3C32FD2D2BF2906600BE484B /* DateConverter.swift in Sources */,
 				3C7DE37F2BEFDE4F0026923F /* ActivitySelector.swift in Sources */,
 				3CD588E02BE7E2BF0073F8DD /* LifeTimeApp.swift in Sources */,
 				3C56C9662BF131C2000DD283 /* CustomNumberField.swift in Sources */,
@@ -425,7 +426,6 @@
 				3C7DE37A2BEFCDF50026923F /* ActivityViewModel.swift in Sources */,
 				3C7DE3762BEFA1020026923F /* ActivityView.swift in Sources */,
 				3C56C9432BF0C4B8000DD283 /* Encodable+asDictionary.swift in Sources */,
-				3C7DE3612BEEC86D0026923F /* AuthView.swift in Sources */,
 				3C7DE3782BEFA7C50026923F /* CircularProgressView.swift in Sources */,
 				3C56C95B2BF11317000DD283 /* AddActivityViewModel.swift in Sources */,
 				3C7DE3482BEE9BE00026923F /* AppButton.swift in Sources */,

@@ -26,7 +26,7 @@ struct SettingsView: View {
                     //TODO: Удалить кнопку
                     Button {
                         Task {
-                            await viewModel.signOut()
+                            authService.signOut()
                         }
                     } label: {
                         Text("Выйти")
@@ -38,9 +38,7 @@ struct SettingsView: View {
                         .padding()
                     
                     Button {
-                        Task {
-                            await viewModel.signOut()
-                        }
+                        authService.signOut()
                     } label: {
                         Text("Выйти")
                             .foregroundStyle(Color.appRed)

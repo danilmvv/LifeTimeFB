@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct AddActivityView: View {
+    @Environment(DBService.self) private var dataService
+    
     @State private var viewModel = ViewModel()
     @State private var selectedDays: [String] = []
     
@@ -92,8 +94,19 @@ struct AddActivityView: View {
                 
                 VStack(spacing: 32) {
                     AppButton(title: "Добавить активность") {
-                        //
-                        dismiss()
+                        if viewModel.canSave {
+                            let newActivity = viewModel.createActivity()
+                            Task {
+                                do {
+                                    try await dataService.addActivity(activity: newActivity)
+                                } catch {
+                                    print(error)
+                                }
+                            }
+                            dismiss()
+                        } else {
+                            viewModel.showAlert = true
+                        }
                     }
                     
                     Button {
@@ -110,9 +123,10 @@ struct AddActivityView: View {
             }
             .padding()
         }
+        .alert(isPresented: $viewModel.showAlert) {
+            Alert(title: Text("Ошибка!"), message: Text("Пожалуйста, заполните все поля"))
+        }
     }
-    
-    
 }
 
 #Preview {

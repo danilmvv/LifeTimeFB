@@ -1,6 +1,6 @@
 import SwiftUI
 
-enum Day: String, CaseIterable {
+enum Day: String, CaseIterable, Codable {
     case Monday = "ПН"
     case Tuesday = "ВТ"
     case Wednesday = "СР"

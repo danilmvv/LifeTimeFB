@@ -22,6 +22,7 @@ enum Tab: String {
 }
 
 struct ContentView: View {
+    @Environment(DBService.self) private var dataService
     @State private var authService = AuthService.shared
     @State private var activeTab: Tab = .activity
     
@@ -36,18 +37,26 @@ struct ContentView: View {
                         ActivityView()
                             .tag(Tab.activity)
                             .tabItem { Tab.activity.tabContent }
-                        
+
                         StatsView()
                             .tag(Tab.stats)
                             .tabItem { Tab.stats.tabContent }
+
                         
                         HistoryView()
                             .tag(Tab.history)
                             .tabItem { Tab.history.tabContent }
-                        
+
                         SettingsView()
                             .tag(Tab.settings)
                             .tabItem { Tab.settings.tabContent }
+                    }
+                    .task {
+                        do {
+                            try await dataService.getData()
+                        } catch {
+                            print(error)
+                        }
                     }
                 } else {
                     AuthView()

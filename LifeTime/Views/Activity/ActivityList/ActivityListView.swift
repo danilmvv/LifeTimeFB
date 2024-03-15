@@ -1,10 +1,10 @@
 import SwiftUI
 
 struct ActivityListView: View {
-    @Binding var selectedIndex: Int
-    var activities: [Activity]
-    
+    @Environment(DBService.self) private var dataService
     @Environment(\.dismiss) var dismiss
+    
+    @Binding var selectedIndex: Int
     @State private var showAddActivityView: Bool = false
     
     var body: some View {
@@ -19,8 +19,8 @@ struct ActivityListView: View {
                         .fontWeight(.bold)
                         .padding(.vertical)
                     
-                    ForEach(0..<activities.count, id: \.self) { index in
-                        ActivityInfoCard(activity: activities[index])
+                    ForEach(0..<dataService.activities.count, id: \.self) { index in
+                        ActivityInfoCard(activity: dataService.activities[index])
                             .padding(.horizontal)
                             .onTapGesture {
                                 self.selectedIndex = index
@@ -36,7 +36,15 @@ struct ActivityListView: View {
                 }
                 .padding(.top)
             }
-            .fullScreenCover(isPresented: $showAddActivityView) {
+            .fullScreenCover(isPresented: $showAddActivityView, onDismiss: {
+                Task {
+                    do {
+                        try await dataService.getData()
+                    } catch {
+                        print(error)
+                    }
+                }
+            }) {
                 AddActivityView()
             }
         }
@@ -44,11 +52,6 @@ struct ActivityListView: View {
 }
 
 #Preview {
-    let previewActivities: [Activity] = [
-        Activity(id: "1", title: "Гитара", dateAdded: "15 Января 2024", totalTime: 0.0, goal: 0.0, goalType: "", goalCompleted: 0, color: "#21B44A"),
-        Activity(id: "2", title: "Pet-проект", dateAdded: "15 Января 2024", totalTime: 0, goal: 0, goalType: "", goalCompleted: 0, color: "#275FF4"),
-        Activity(id: "3", title: "Чтение", dateAdded: "15 Января 2024", totalTime: 0, goal: 0, goalType: "", goalCompleted: 0, color: "#B92D5D")
-    ]
-    
-    return ActivityListView(selectedIndex: .constant(0), activities: previewActivities)
+    ActivityListView(selectedIndex: .constant(0))
+        .environment(DBService())
 }

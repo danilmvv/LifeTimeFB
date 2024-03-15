@@ -2,7 +2,7 @@ import SwiftUI
 import AuthenticationServices
 
 struct AuthView: View {
-    @State private var viewModel = ViewModel()
+    @State private var authService = AuthService.shared
     @State private var showEmailSignIn = false
     
     var body: some View {
@@ -43,7 +43,11 @@ struct AuthView: View {
                 
                 Button {
                     Task {
-                        await viewModel.anonSignIn()
+                        do {
+                            try await authService.anonymousSignIn()
+                        } catch {
+                            print(error)
+                        }
                     }
                 } label: {
                     Text("Позже")

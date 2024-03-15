@@ -8,6 +8,9 @@ struct Activity: Codable, Identifiable {
     var totalTime: TimeInterval
     var goal: TimeInterval
     var goalType: String
-    var goalCompleted: Int
+    var goalCompletedCount: Int
     var color: String
+    var notificationsEnabled: Bool
+    var notificationTime: String?
+    var notificationDays: [Day]?
 }

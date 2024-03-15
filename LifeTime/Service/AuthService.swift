@@ -12,7 +12,6 @@ enum AuthState {
     case signedOut
 }
 
-@MainActor
 @Observable
 class AuthService {
     var user: User?
@@ -24,7 +23,7 @@ class AuthService {
     
     init() {
         Auth.auth().addStateDidChangeListener { (auth, user) in
-            print("Auth changed: \(user != nil)")
+            print("User: \(user != nil)")
             self.updateState(user: user)
         }
     }
@@ -51,15 +50,19 @@ class AuthService {
         }
         
         let result = try await user.link(with: credential)
-        updateUserRecord(user: user)
-
+        try await updateUserRecord(user: user)
+        
         updateState(user: result.user)
         
         return result
     }
     
-    func signOut() throws {
-        try Auth.auth().signOut()
+    func signOut() {
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            print(error)
+        }
     }
     
     func updateState(user: User?) {
@@ -95,16 +98,10 @@ extension AuthService {
             .setData(newUser.asDictionary())
     }
     
-    private func updateUserRecord(user: User) {
+    private func updateUserRecord(user: User) async throws {
         let userRef = Firestore.firestore().collection("users").document(user.uid)
 
-        userRef.updateData(["email": user.email!]) { error in
-            if let error = error {
-                print(error.localizedDescription)
-            } else {
-                print("Email updated in Firestore")
-            }
-        }
+        try await userRef.updateData(["email": user.email!])
     }
     
 }
