@@ -14,6 +14,8 @@ struct ActivityInfoCard: View {
                     .font(.subheadline)
                     .fontWeight(.light)
             }
+            .foregroundStyle(Color.fromHexString(activity.color).isDark ? Color.textPrimary : Color.accentText)
+            
             Spacer()
         }
         .padding()
@@ -26,5 +28,5 @@ struct ActivityInfoCard: View {
 }
 
 #Preview {
-    ActivityInfoCard(activity: Activity(id: "1", title: "Гитара", dateAdded: "2024-05-14T18:36:00+05:00", totalTime: 23.5, goal: 0.0, goalType: "", goalCompletedCount: 0, color: "#21B44A", notificationsEnabled: false))
+    ActivityInfoCard(activity: Activity(id: "1", title: "Гитара", dateAdded: "2024-05-14T18:36:00+05:00", totalTime: 23.5, goal: 0.0, goalType: "", goalCompletedCount: 0, color: "#275FF4", notificationsEnabled: false))
 }

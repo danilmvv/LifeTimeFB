@@ -7,11 +7,12 @@ struct ActivitySelector: View {
     var body: some View {
         ZStack {
             if !dataService.activities.isEmpty {
+                let currentActivity = dataService.activities[selectedIndex]
                 
-                Text(dataService.activities[selectedIndex].title)
+                Text(currentActivity.title)
                     .padding()
                     .frame(maxWidth: .infinity)
-                    .foregroundStyle(.primary)
+                    .foregroundStyle(getTextColor(activity: currentActivity))
                     .font(.headline)
                     .animation(.none, value: selectedIndex)
                 
@@ -37,11 +38,12 @@ struct ActivitySelector: View {
                                 .padding(.horizontal)
                         }
                     }
+                    .foregroundStyle(getTextColor(activity: currentActivity))
                 }
             } else {
                 Text("Создать активность")
                     .padding()
-                    .foregroundStyle(.primary)
+                    .foregroundStyle(.textPrimary)
                     .font(.headline)
                     .frame(maxWidth: .infinity)
             }
@@ -69,6 +71,14 @@ struct ActivitySelector: View {
             selectedIndex = 0
         } else {
             selectedIndex += 1
+        }
+    }
+    
+    func getTextColor(activity: Activity) -> Color {
+        if Color.fromHexString(activity.color).isDark {
+            return Color.textPrimary
+        } else {
+            return Color.accentText
         }
     }
 }

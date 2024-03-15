@@ -12,7 +12,7 @@ extension AddActivityView {
         var emoji: String = ""
         var goal: TimeInterval = 0.0
         var goalType: GoalType = .weekly
-        var color: Color = Color.fromHexString("#275FF4")
+        var color: Color = Color.random()
         var notificationsEnabled: Bool = false
         var notificationTime: String = "09:00"
         var notificationDays: [Day] = []
