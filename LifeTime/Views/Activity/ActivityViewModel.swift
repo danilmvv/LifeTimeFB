@@ -6,6 +6,8 @@ extension ActivityView {
     
     @Observable
     class ViewModel {
+        var loadingState = LoadingState.fetched
+        
         var isRunning: Bool = false
         var elapsedTime: TimeInterval = 0
         var sessionDuration: TimeInterval = 0
@@ -14,6 +16,7 @@ extension ActivityView {
         private var timer: Timer?
         private var soundID : SystemSoundID = 1407
         private let feedback = UIImpactFeedbackGenerator(style: .soft)
+        
         
         func toggleTimer() {
             if isRunning {

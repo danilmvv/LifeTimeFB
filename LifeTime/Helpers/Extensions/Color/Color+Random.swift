@@ -5,7 +5,7 @@ extension Color {
     static func random() -> Color {
         let minHue: Double = 0
         let maxHue: Double = 1
-        let minVal: Double = 0.8
+        let minVal: Double = 0.9
         let maxVal: Double = 1
         
         let hue = Double.random(in: minHue...maxHue)

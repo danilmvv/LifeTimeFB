@@ -2,19 +2,20 @@ import SwiftUI
 
 struct ActivitySelector: View {
     @Environment(DBService.self) private var dataService
-    @Binding var selectedIndex: Int
     
     var body: some View {
         ZStack {
             if !dataService.activities.isEmpty {
-                let currentActivity = dataService.activities[selectedIndex]
-                
-                Text(currentActivity.title)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .foregroundStyle(getTextColor(activity: currentActivity))
-                    .font(.headline)
-                    .animation(.none, value: selectedIndex)
+                if let currentActivity = dataService.currentActivity {
+                    Text(currentActivity.title)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .foregroundStyle(
+                            getTextColor(color: Color.fromHexString(currentActivity.color))
+                        )
+                        .font(.headline)
+                        .animation(.none, value: dataService.currentActivity)
+                }
                 
                 if dataService.activities.count > 1 {
                     HStack {
@@ -38,44 +39,58 @@ struct ActivitySelector: View {
                                 .padding(.horizontal)
                         }
                     }
-                    .foregroundStyle(getTextColor(activity: currentActivity))
+                    .foregroundStyle(getTextColor(color: Color.fromHexString(dataService.currentActivity?.color ?? "#FFFFFF")))
                 }
             } else {
-                Text("Создать активность")
-                    .padding()
-                    .foregroundStyle(.textPrimary)
-                    .font(.headline)
-                    .frame(maxWidth: .infinity)
+                switch dataService.activitiesLoadingState {
+                case .loading:
+                    ProgressView()
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                case .fetched:
+                    Text("Создать активность")
+                        .padding()
+                        .foregroundStyle(.textPrimary)
+                        .font(.headline)
+                        .frame(maxWidth: .infinity)
+                default:
+                    EmptyView()
+                }
             }
         }
+        .animation(.default, value: dataService.activities)
         .background {
             RoundedRectangle(cornerRadius: 25)
                 .fill(
-                    dataService.activities.isEmpty
-                    ? Color.backgroundSecondary
-                    : Color.fromHexString(dataService.activities[selectedIndex].color)
+                    !dataService.activities.isEmpty && dataService.currentActivity != nil
+                    ? Color.fromHexString(dataService.currentActivity!.color)
+                    : Color.backgroundSecondary
                 )
         }
     }
     
     func selectPrevious() {
-        if selectedIndex == 0 {
-            selectedIndex = dataService.activities.count - 1
-        } else {
-            selectedIndex -= 1
+        if let currentIndex = dataService.activities.firstIndex(where: { $0.id == dataService.currentActivity?.id }) {
+            if currentIndex > 0 {
+                dataService.currentActivity = dataService.activities[currentIndex - 1]
+            } else {
+                dataService.currentActivity = dataService.activities.last
+            }
         }
     }
     
     func selectNext() {
-        if selectedIndex == dataService.activities.count - 1 {
-            selectedIndex = 0
-        } else {
-            selectedIndex += 1
+        if let currentIndex = dataService.activities.firstIndex(where: { $0.id == dataService.currentActivity?.id }) {
+            if currentIndex < dataService.activities.count - 1 {
+                dataService.currentActivity = dataService.activities[currentIndex + 1]
+            } else {
+                dataService.currentActivity = dataService.activities.first
+            }
         }
     }
     
-    func getTextColor(activity: Activity) -> Color {
-        if Color.fromHexString(activity.color).isDark {
+    func getTextColor(color: Color) -> Color {
+        if color.isDark {
             return Color.textPrimary
         } else {
             return Color.accentText
@@ -84,6 +99,6 @@ struct ActivitySelector: View {
 }
 
 #Preview {
-    ActivitySelector(selectedIndex: .constant(0))
+    ActivitySelector()
         .environment(DBService())
 }

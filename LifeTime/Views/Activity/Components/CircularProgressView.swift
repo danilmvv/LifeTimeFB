@@ -9,14 +9,14 @@ struct CircularProgressView: View {
         ZStack {
             Circle()
                 .stroke(style: StrokeStyle(lineWidth: 20,lineCap: .butt, dash: [2,6]))
-                .foregroundStyle(.textPrimary)
+                .foregroundStyle(.appWhite)
                 .rotationEffect(Angle(degrees: 270.0))
                 .opacity(0.2)
             
             Circle()
                 .trim(from: 0.0, to: min(progress, 1.0))
                 .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .butt, dash: [2,6]))
-                .foregroundStyle(.textPrimary)
+                .foregroundStyle(.appWhite)
                 .rotationEffect(Angle(degrees: 270.0))
                 .animation(.spring(), value: progress)
             

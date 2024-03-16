@@ -3,7 +3,6 @@ import SwiftUI
 struct ActivityView: View {
     @Environment(DBService.self) private var dataService
     @State private var viewModel = ViewModel()
-    @State private var selectedIndex: Int = 0
     
     @State private var isSheetPresented = false
     
@@ -31,28 +30,27 @@ struct ActivityView: View {
                     
                     Spacer()
                     
-                    VStack {
-                        Text("17/50 ч.")
-                            .font(.title)
-                            .fontWeight(.bold)
-                        Text("на этой неделе")
-                            .font(.system(.body, design: .monospaced))
-                            .fontWeight(.semibold)
+                    if !dataService.activities.isEmpty {
+                        ProgressInfo()
+                    } else {
+                        // Placeholder
+                        ProgressInfo()
+                            .opacity(0)
                     }
-                    .foregroundStyle(.textSecondary)
+                    
                     
                     Spacer()
-                    ActivitySelector(selectedIndex: $selectedIndex)
+                    ActivitySelector()
                         .padding(.top)
                         .padding(.bottom, 25)
                         .padding(.horizontal, 25)
                         .onTapGesture {
                             isSheetPresented.toggle()
                         }
-                        .sensoryFeedback(.impact(flexibility: .soft), trigger: selectedIndex)
+                        .sensoryFeedback(.impact(flexibility: .soft), trigger: dataService.currentActivity)
                 }
             }
-            .navigationTitle("Активность")
+//            .navigationTitle("Активность")
             .sheet(isPresented: $isSheetPresented, onDismiss: {
                 Task {
                     do {
@@ -66,7 +64,7 @@ struct ActivityView: View {
                     AddActivityView()
                         .presentationDragIndicator(.visible)
                 } else {
-                    ActivityListView(selectedIndex: $selectedIndex)
+                    ActivityListView()
                         .presentationDragIndicator(.visible)
                 }
             }

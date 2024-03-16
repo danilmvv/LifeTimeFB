@@ -22,16 +22,16 @@ struct EmailSignInView: View {
                     AuthTextField(placeholder: "Пароль", text: $viewModel.password, isSecure: true)
                     AppButton(title: "Готово") {
                         Task {
-                            if authService.user != nil {
+                            if authService.authState != .signedOut {
                                 print("Link")
                                 await viewModel.linkEmail()
-                                if authService.user?.isAnonymous == false {
+                                if authService.authState == .signedIn {
                                     dismiss()
                                 }
                             } else {
                                 print("SignIn")
                                 await viewModel.signIn()
-                                if authService.user != nil {
+                                if authService.authState != .signedOut {
                                     dismiss()
                                 } else {
                                     viewModel.errorMessage = "Ошибка!"
@@ -51,7 +51,5 @@ struct EmailSignInView: View {
 }
 
 #Preview {
-    NavigationStack {
-        EmailSignInView()
-    }
+    EmailSignInView()
 }

@@ -11,6 +11,8 @@
 		3C32FD2F2BF38C5D00BE484B /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C32FD2E2BF38C5D00BE484B /* AuthView.swift */; };
 		3C32FD322BF3A47400BE484B /* Color+isDark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C32FD312BF3A47400BE484B /* Color+isDark.swift */; };
 		3C32FD342BF3A5AC00BE484B /* Color+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C32FD332BF3A5AC00BE484B /* Color+Random.swift */; };
+		3C32FD362BF3DD7500BE484B /* LoadingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C32FD352BF3DD7500BE484B /* LoadingState.swift */; };
+		3C32FD382BF3F44700BE484B /* ProgressInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C32FD372BF3F44700BE484B /* ProgressInfo.swift */; };
 		3C56C93D2BF0BD0E000DD283 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56C93C2BF0BD0E000DD283 /* SettingsViewModel.swift */; };
 		3C56C9412BF0C3F1000DD283 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56C9402BF0C3F1000DD283 /* Profile.swift */; };
 		3C56C9432BF0C4B8000DD283 /* Encodable+asDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C56C9422BF0C4B8000DD283 /* Encodable+asDictionary.swift */; };
@@ -58,6 +60,8 @@
 		3C32FD2E2BF38C5D00BE484B /* AuthView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		3C32FD312BF3A47400BE484B /* Color+isDark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+isDark.swift"; sourceTree = "<group>"; };
 		3C32FD332BF3A5AC00BE484B /* Color+Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Random.swift"; sourceTree = "<group>"; };
+		3C32FD352BF3DD7500BE484B /* LoadingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingState.swift; sourceTree = "<group>"; };
+		3C32FD372BF3F44700BE484B /* ProgressInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressInfo.swift; sourceTree = "<group>"; };
 		3C56C93C2BF0BD0E000DD283 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		3C56C9402BF0C3F1000DD283 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		3C56C9422BF0C4B8000DD283 /* Encodable+asDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+asDictionary.swift"; sourceTree = "<group>"; };
@@ -275,6 +279,7 @@
 				3C7DE3772BEFA7C50026923F /* CircularProgressView.swift */,
 				3C7DE37B2BEFDC640026923F /* FormattedTimeText.swift */,
 				3C56C9672BF14488000DD283 /* DaysPicker.swift */,
+				3C32FD372BF3F44700BE484B /* ProgressInfo.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -284,8 +289,9 @@
 			children = (
 				3C7DE3852BF0AAF70026923F /* Activity.swift */,
 				3C56C9472BF0DDE0000DD283 /* Session.swift */,
-				3C7DE38B2BF0B2EB0026923F /* GoalType.swift */,
 				3C56C9402BF0C3F1000DD283 /* Profile.swift */,
+				3C7DE38B2BF0B2EB0026923F /* GoalType.swift */,
+				3C32FD352BF3DD7500BE484B /* LoadingState.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -427,6 +433,7 @@
 				3CD588E22BE7E2BF0073F8DD /* ContentView.swift in Sources */,
 				3C7DE3862BF0AAF70026923F /* Activity.swift in Sources */,
 				3C56C9582BF106F0000DD283 /* HistoryView.swift in Sources */,
+				3C32FD362BF3DD7500BE484B /* LoadingState.swift in Sources */,
 				3C7DE37C2BEFDC640026923F /* FormattedTimeText.swift in Sources */,
 				3C56C9522BF0FDC3000DD283 /* AddActivityView.swift in Sources */,
 				3C32FD2D2BF2906600BE484B /* DateConverter.swift in Sources */,
@@ -446,6 +453,7 @@
 				3C56C95B2BF11317000DD283 /* AddActivityViewModel.swift in Sources */,
 				3C7DE3482BEE9BE00026923F /* AppButton.swift in Sources */,
 				3C56C9682BF14488000DD283 /* DaysPicker.swift in Sources */,
+				3C32FD382BF3F44700BE484B /* ProgressInfo.swift in Sources */,
 				3C7DE3812BF0A9120026923F /* TimeInterval+toHours.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

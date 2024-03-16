@@ -7,7 +7,7 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 enum AuthState {
-    case authenticated // Анон
+    case anonymous
     case signedIn
     case signedOut
 }
@@ -31,10 +31,12 @@ class AuthService {
     func signUp(email: String, password: String) async throws {
         let result = try await Auth.auth().createUser(withEmail: email, password: password)
         try await insertUserRecord(user: result.user)
+        updateState(user: result.user)
     }
     
     func signIn(email: String, password: String) async throws {
-        try await Auth.auth().signIn(withEmail: email, password: password)
+        let result = try await Auth.auth().signIn(withEmail: email, password: password)
+        updateState(user: result.user)
     }
     
     func anonymousSignIn() async throws {
@@ -60,6 +62,7 @@ class AuthService {
     func signOut() {
         do {
             try Auth.auth().signOut()
+            updateState(user: nil)
         } catch {
             print(error)
         }
@@ -71,14 +74,10 @@ class AuthService {
         let isAnonymous = user?.isAnonymous ?? false
         
         if isAuthenticatedUser {
-            self.authState = isAnonymous ? .authenticated : .signedIn
+            self.authState = isAnonymous ? .anonymous : .signedIn
         } else {
             self.authState = .signedOut
         }
-    }
-    
-    var isSignedIn: Bool {
-        return Auth.auth().currentUser != nil
     }
 }
 

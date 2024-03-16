@@ -15,7 +15,7 @@ struct AppButton: View {
                 .frame(maxWidth: .infinity)
                 .background {
                     RoundedRectangle(cornerRadius: 10)
-                        .fill(.appAccent)
+                        .fill(.accent)
                 }
         }
     }

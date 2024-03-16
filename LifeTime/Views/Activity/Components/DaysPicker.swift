@@ -18,11 +18,11 @@ struct DaysPicker: View {
             ForEach(Day.allCases, id: \.self) { day in
                 Text(day.rawValue)
                     .fontWeight(.bold)
-                    .foregroundStyle(selectedDays.contains(day) ? .appAccent : .textPrimary)
+                    .foregroundStyle(selectedDays.contains(day) ? .accent : .textPrimary)
                     .frame(width: 42, height: 42)
                     .background {
                         selectedDays.contains(day)
-                        ? Color.appAccent.opacity(0.1).clipShape(Circle())
+                        ? Color.accent.opacity(0.1).clipShape(Circle())
                         : Color.backgroundSecondary.clipShape(Circle())
                     }
                     .onTapGesture {

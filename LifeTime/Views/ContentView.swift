@@ -31,36 +31,36 @@ struct ContentView: View {
             Color.backgroundPrimary
                 .ignoresSafeArea()
             
-            NavigationStack {
-                if authService.user != nil {
-                    TabView(selection: $activeTab) {
-                        ActivityView()
-                            .tag(Tab.activity)
-                            .tabItem { Tab.activity.tabContent }
-
-                        StatsView()
-                            .tag(Tab.stats)
-                            .tabItem { Tab.stats.tabContent }
-
-                        
-                        HistoryView()
-                            .tag(Tab.history)
-                            .tabItem { Tab.history.tabContent }
-
-                        SettingsView()
-                            .tag(Tab.settings)
-                            .tabItem { Tab.settings.tabContent }
-                    }
-                    .task {
-                        do {
-                            try await dataService.getData()
-                        } catch {
-                            print(error)
-                        }
-                    }
-                } else {
-                    AuthView()
+            if authService.authState != .signedOut {
+                TabView(selection: $activeTab) {
+                    ActivityView()
+                        .tag(Tab.activity)
+                        .tabItem { Tab.activity.tabContent }
+                    
+                    StatsView()
+                        .tag(Tab.stats)
+                        .tabItem { Tab.stats.tabContent }
+                    
+                    
+                    HistoryView()
+                        .tag(Tab.history)
+                        .tabItem { Tab.history.tabContent }
+                    
+                    SettingsView()
+                        .tag(Tab.settings)
+                        .tabItem { Tab.settings.tabContent }
                 }
+                .tint(.appWhite)
+                .task {
+                    do {
+                        try await dataService.getData()
+                        dataService.currentActivity = dataService.activities.first
+                    } catch {
+                        print(error)
+                    }
+                }
+            } else {
+                AuthView()
             }
         }
     }
@@ -68,4 +68,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environment(DBService())
 }

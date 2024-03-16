@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-struct Activity: Codable, Identifiable {
+struct Activity: Codable, Identifiable, Equatable {
     let id: String
     let title: String
     var dateAdded: String
@@ -13,4 +13,6 @@ struct Activity: Codable, Identifiable {
     var notificationsEnabled: Bool
     var notificationTime: String?
     var notificationDays: [Day]?
+    
+    static let `default` = Activity(id: UUID().uuidString, title: "Чтение", dateAdded: "", totalTime: 0, goal: 0, goalType: GoalType.weekly.rawValue, goalCompletedCount: 0, color: "#21B44A", notificationsEnabled: false)
 }

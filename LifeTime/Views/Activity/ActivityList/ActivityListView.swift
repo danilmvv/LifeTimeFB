@@ -4,7 +4,6 @@ struct ActivityListView: View {
     @Environment(DBService.self) private var dataService
     @Environment(\.dismiss) var dismiss
     
-    @Binding var selectedIndex: Int
     @State private var showAddActivityView: Bool = false
     
     var body: some View {
@@ -12,46 +11,49 @@ struct ActivityListView: View {
             Color.backgroundPrimary
                 .ignoresSafeArea()
             
-            ScrollView {
-                VStack(spacing: 16) {
-                    Text("Выберите активность")
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .padding(.vertical)
-                    
-                    ForEach(0..<dataService.activities.count, id: \.self) { index in
-                        ActivityInfoCard(activity: dataService.activities[index])
+            VStack {
+                Text("Выберите активность")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .padding(.top)
+                
+                
+                ScrollView {
+                    ForEach(dataService.activities) { activity in
+                        ActivityInfoCard(activity: activity)
                             .padding(.horizontal)
+                            .padding(.vertical, 5)
                             .onTapGesture {
-                                self.selectedIndex = index
+                                print(activity.title)
+                                dataService.currentActivity = activity
                                 dismiss()
                             }
                     }
+                    .transition(.slide)
+                    
                     SecondaryAppButton(title: "Новая активность") {
                         showAddActivityView.toggle()
                     }
                     .padding()
-                    
-                    Spacer()
                 }
-                .padding(.top)
+                .animation(.easeInOut, value: dataService.activities)
             }
-            .fullScreenCover(isPresented: $showAddActivityView, onDismiss: {
-                Task {
-                    do {
-                        try await dataService.getData()
-                    } catch {
-                        print(error)
-                    }
+        }
+        .fullScreenCover(isPresented: $showAddActivityView, onDismiss: {
+            Task {
+                do {
+                    try await dataService.getData()
+                } catch {
+                    print(error)
                 }
-            }) {
-                AddActivityView()
             }
+        }) {
+            AddActivityView()
         }
     }
 }
 
 #Preview {
-    ActivityListView(selectedIndex: .constant(0))
+    ActivityListView()
         .environment(DBService())
 }

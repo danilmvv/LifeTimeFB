@@ -8,7 +8,8 @@ extension Color {
             return false
         }
         
-        let lum = 0.2126 * red + 0.7152 * green + 0.0722 * blue
+        // https://www.w3.org/TR/AERT/#color-contrast
+        let lum = 0.299 * red + 0.587 * green + 0.114 * blue
         return lum < 0.5
     }
 }

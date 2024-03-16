@@ -77,7 +77,7 @@ struct AddActivityView: View {
                         
                         Text(viewModel.notificationTime)
                             .fontWeight(.bold)
-                            .foregroundStyle(.appAccent)
+                            .foregroundStyle(.accent)
                     }
                     .padding()
                     .frame(maxHeight: 50)
@@ -96,14 +96,17 @@ struct AddActivityView: View {
                     AppButton(title: "Добавить активность") {
                         if viewModel.canSave {
                             let newActivity = viewModel.createActivity()
+                            
                             Task {
                                 do {
                                     try await dataService.addActivity(activity: newActivity)
+                                    dataService.currentActivity = newActivity
+                                    dismiss()
                                 } catch {
                                     print(error)
+                                    dismiss()
                                 }
                             }
-                            dismiss()
                         } else {
                             viewModel.showAlert = true
                         }
