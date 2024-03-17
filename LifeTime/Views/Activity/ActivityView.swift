@@ -7,6 +7,8 @@ struct ActivityView: View {
     @State private var isSheetPresented = false
     
     var body: some View {
+        @Bindable var dataService = dataService
+        
         NavigationStack {
             ZStack {
                 Color.backgroundPrimary
@@ -16,14 +18,24 @@ struct ActivityView: View {
                     Spacer()
                     
                     CircularProgressView(
+                        currentActivity: $dataService.currentActivity,
                         elapsedTime: $viewModel.elapsedTime,
                         progress: .constant(0.42),
                         showTime: $viewModel.isRunning
                     )
                     .frame(width: 300, height: 300)
                     .onTapGesture {
-                        withAnimation {
-                            viewModel.toggleTimer()
+                        if dataService.currentActivity != nil {
+                            withAnimation {
+                                if viewModel.isRunning {
+                                    viewModel.stopTimer()
+    //                                viewModel.createSession(activity: dataService.currentActivity!)
+                                } else {
+                                    viewModel.startTimer()
+                                }
+                            }
+                        } else {
+                            print("Нет активности!")
                         }
                     }
                     .sensoryFeedback(.impact(flexibility: .solid), trigger: viewModel.isRunning)
@@ -40,12 +52,16 @@ struct ActivityView: View {
                     
                     
                     Spacer()
-                    ActivitySelector()
+                    ActivitySelector(isTimerRunning: $viewModel.isRunning)
                         .padding(.top)
                         .padding(.bottom, 25)
                         .padding(.horizontal, 25)
                         .onTapGesture {
-                            isSheetPresented.toggle()
+                            if !viewModel.isRunning {
+                                isSheetPresented.toggle()
+                            } else {
+                                print("Нельзя менять активность при запущенном таймере")
+                            }
                         }
                         .sensoryFeedback(.impact(flexibility: .soft), trigger: dataService.currentActivity)
                 }

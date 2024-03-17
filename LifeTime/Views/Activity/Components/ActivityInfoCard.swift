@@ -28,5 +28,5 @@ struct ActivityInfoCard: View {
 }
 
 #Preview {
-    ActivityInfoCard(activity: Activity(id: "1", title: "Гитара", dateAdded: "2024-05-14T18:36:00+05:00", totalTime: 23.5, goal: 0.0, goalType: "", goalCompletedCount: 0, color: "#275FF4", notificationsEnabled: false))
+    ActivityInfoCard(activity: Activity.default)
 }

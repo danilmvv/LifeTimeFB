@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ActivitySelector: View {
     @Environment(DBService.self) private var dataService
+    @Binding var isTimerRunning: Bool
     
     var body: some View {
         ZStack {
@@ -17,7 +18,7 @@ struct ActivitySelector: View {
                         .animation(.none, value: dataService.currentActivity)
                 }
                 
-                if dataService.activities.count > 1 {
+                if dataService.activities.count > 1 && !isTimerRunning {
                     HStack {
                         Button {
                             withAnimation {
@@ -99,6 +100,6 @@ struct ActivitySelector: View {
 }
 
 #Preview {
-    ActivitySelector()
+    ActivitySelector(isTimerRunning: .constant(false))
         .environment(DBService())
 }

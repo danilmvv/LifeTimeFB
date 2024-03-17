@@ -17,15 +17,6 @@ extension ActivityView {
         private var soundID : SystemSoundID = 1407
         private let feedback = UIImpactFeedbackGenerator(style: .soft)
         
-        
-        func toggleTimer() {
-            if isRunning {
-                stopTimer()
-            } else {
-                startTimer()
-            }
-        }
-        
         func startTimer() {
             startTime = Date()
             timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
@@ -42,6 +33,7 @@ extension ActivityView {
                 sessionDuration += Date().timeIntervalSince(startTime)
             }
             isRunning = false
+            
             reset()
         }
         
@@ -50,9 +42,26 @@ extension ActivityView {
             elapsedTime = 0
         }
         
+        func createSession(activity: Activity) -> Session {
+            let dateFormatter = DateConverter.shared
+            
+            let newID = UUID().uuidString
+            let newSession = Session(
+                id: newID,
+                activityID: activity.id,
+                dateStarted: dateFormatter.getStringFromDate(startTime!),
+                startTime: dateFormatter.getTimeString(startTime!),
+                endTime: dateFormatter.getTimeString(Date()),
+                duration: sessionDuration
+            )
+            
+            return newSession
+        }
+        
         private func sendFeedback(){
             AudioServicesPlayAlertSoundWithCompletion(soundID, nil)
             AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate), {})
         }
+        
     }
 }

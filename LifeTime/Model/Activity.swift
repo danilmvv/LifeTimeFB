@@ -14,5 +14,5 @@ struct Activity: Codable, Identifiable, Equatable {
     var notificationTime: String?
     var notificationDays: [Day]?
     
-    static let `default` = Activity(id: UUID().uuidString, title: "Чтение", dateAdded: "", totalTime: 0, goal: 0, goalType: GoalType.weekly.rawValue, goalCompletedCount: 0, color: "#21B44A", notificationsEnabled: false)
+    static let `default` = Activity(id: UUID().uuidString, title: "Чтение", dateAdded: "2024-05-14T18:36:00+05:00", totalTime: 0, goal: 0, goalType: GoalType.weekly.rawValue, goalCompletedCount: 0, color: "#21B44A", notificationsEnabled: false)
 }
