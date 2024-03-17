@@ -20,7 +20,7 @@ struct ActivityView: View {
                         progress: .constant(0.42),
                         showTime: $viewModel.isRunning
                     )
-                    .frame(width: 320, height: 320)
+                    .frame(width: 300, height: 300)
                     .onTapGesture {
                         withAnimation {
                             viewModel.toggleTimer()
@@ -50,7 +50,7 @@ struct ActivityView: View {
                         .sensoryFeedback(.impact(flexibility: .soft), trigger: dataService.currentActivity)
                 }
             }
-//            .navigationTitle("Активность")
+            .navigationTitle("Активность")
             .sheet(isPresented: $isSheetPresented, onDismiss: {
                 Task {
                     do {

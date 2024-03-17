@@ -26,7 +26,7 @@ struct AddActivityView: View {
                         .frame(maxWidth: .infinity)
                     
                     Menu {
-                        Picker("", selection: $viewModel.goalType) {
+                        Picker("Цель", selection: $viewModel.goalType) {
                             ForEach(GoalType.allCases, id: \.self) {
                                 Text($0.rawValue)
                             }
@@ -39,6 +39,7 @@ struct AddActivityView: View {
                             Image(systemName: "chevron.up.chevron.down")
                                 .font(.system(size: 16))
                         }
+                        .foregroundStyle(.appWhite)
                         .padding()
                         .frame(maxWidth: .infinity, maxHeight: 50)
                         .background {
@@ -59,6 +60,7 @@ struct AddActivityView: View {
                     }
                 
                 Toggle("Уведомления", isOn: $viewModel.notificationsEnabled)
+                    .tint(.accentColor)
                     .fontWeight(.bold)
                     .padding(.horizontal)
                     .padding(.vertical, 12)
@@ -69,23 +71,15 @@ struct AddActivityView: View {
                     }
                 
                 VStack(spacing: 16) {
-                    HStack {
-                        Text("Напомнить в")
-                            .fontWeight(.bold)
-                        
-                        Spacer()
-                        
-                        Text(viewModel.notificationTime)
-                            .fontWeight(.bold)
-                            .foregroundStyle(.accent)
-                    }
-                    .padding()
-                    .frame(maxHeight: 50)
-                    .background {
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(.ultraThinMaterial)
-                    }
-                    .allowsHitTesting(viewModel.notificationsEnabled)
+                    DatePicker("Напомнить в", selection: $viewModel.notificationTime, displayedComponents: [.hourAndMinute])
+                        .fontWeight(.bold)
+                        .padding()
+                        .frame(maxHeight: 50)
+                        .background {
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(.ultraThinMaterial)
+                        }
+                        .allowsHitTesting(viewModel.notificationsEnabled)
                     
                     DaysPicker(selectedDays: $viewModel.notificationDays)
                         .allowsHitTesting(viewModel.notificationsEnabled)
@@ -134,4 +128,5 @@ struct AddActivityView: View {
 
 #Preview {
     AddActivityView()
+        .environment(DBService())
 }

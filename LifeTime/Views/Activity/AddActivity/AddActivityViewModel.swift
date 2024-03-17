@@ -14,7 +14,7 @@ extension AddActivityView {
         var goalType: GoalType = .weekly
         var color: Color = Color.random()
         var notificationsEnabled: Bool = false
-        var notificationTime: String = "09:00"
+        var notificationTime: Date = Date()
         var notificationDays: [Day] = []
         var showAlert = false
         
@@ -43,7 +43,7 @@ extension AddActivityView {
                 goalCompletedCount: 0,
                 color: color.toHexString(),
                 notificationsEnabled: notificationsEnabled,
-                notificationTime: notificationTime,
+                notificationTime: dateFormatter.getTimeString(notificationTime),
                 notificationDays: notificationDays
             )
             

@@ -20,6 +20,12 @@ class DateConverter {
         return formatter
     }()
     
+    private let timeFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        return formatter
+    }()
+    
     private let calendar: Calendar = Calendar.current
     
     func getDateFromString(_ dateString: String) -> Date? {
@@ -42,9 +48,10 @@ class DateConverter {
     }
     
     func getTimeString(_ date: Date) -> String {
-        let hour = calendar.component(.hour, from: date)
-        let minute = calendar.component(.minute, from: date)
-        
-        return "\(hour):\(minute)"
+        return timeFormatter.string(from: date)
+    }
+    
+    func getDateFromTimeString(from timeString: String) -> Date? {
+        return timeFormatter.date(from: timeString)
     }
 }
