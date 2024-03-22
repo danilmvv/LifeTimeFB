@@ -2,7 +2,7 @@ import SwiftUI
 
 struct CircularProgressView: View {
     @Binding var currentActivity: Activity?
-    @Binding var elapsedTime: TimeInterval
+    @Binding var sessionDuration: TimeInterval
     @Binding var progress: Double
     @Binding var showTime: Bool
     
@@ -21,20 +21,17 @@ struct CircularProgressView: View {
                 .rotationEffect(Angle(degrees: 270.0))
                 .animation(.spring(), value: progress)
             
-            if currentActivity != nil {
-                VStack(spacing: 20) {
-                    if showTime {
-                        FormattedTimeText(time: $elapsedTime)
-                            .foregroundStyle(.textPrimary)
-                            .transition(.scale)
-                    } else {
-                        Image(systemName: "play.fill")
-                            .foregroundStyle(.textPrimary)
-                            .font(.system(size: 96))
-                    }
+            VStack(spacing: 20) {
+                if showTime {
+                    FormattedTimeText(time: $sessionDuration)
+                        .foregroundStyle(.textPrimary)
+                        .transition(.scale)
+                } else {
+                    Image(systemName: "play.fill")
+                        .foregroundStyle(.textPrimary)
+                        .font(.system(size: 96))
+//                        .transition(.scale)
                 }
-            } else {
-                Text("Добавьте активность!")
             }
         }
         .contentShape(Circle())
@@ -43,6 +40,6 @@ struct CircularProgressView: View {
 
 
 #Preview {
-    CircularProgressView(currentActivity: .constant(Activity.default), elapsedTime: .constant(0), progress: .constant(0.1), showTime: .constant(false))
+    CircularProgressView(currentActivity: .constant(Activity.default), sessionDuration: .constant(0), progress: .constant(0.1), showTime: .constant(false))
         .frame(width: 320, height: 320)
 }

@@ -37,7 +37,6 @@ extension AddActivityView {
                 id: newID,
                 title: title,
                 dateAdded: dateFormatter.getStringFromDate(Date()),
-                totalTime: 0,
                 goal: goal * 60 * 60,
                 goalType: goalType.rawValue,
                 goalCompletedCount: 0,

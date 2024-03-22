@@ -7,9 +7,11 @@ extension ActivityView {
     @Observable
     class ViewModel {
         var loadingState = LoadingState.fetched
+        var showSavingAlert: Bool = false
+        var showActivityAlert: Bool = false
         
+        var currentSession: Session?
         var isRunning: Bool = false
-        var elapsedTime: TimeInterval = 0
         var sessionDuration: TimeInterval = 0
         var startTime: Date?
         
@@ -21,7 +23,7 @@ extension ActivityView {
             startTime = Date()
             timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
                 guard let self = self else { return }
-                elapsedTime = Date().timeIntervalSince(startTime!)
+                sessionDuration = Date().timeIntervalSince(startTime!)
             }
             isRunning = true
         }
@@ -29,20 +31,18 @@ extension ActivityView {
         func stopTimer() {
             timer?.invalidate()
             timer = nil
-            if let startTime = startTime {
-                sessionDuration += Date().timeIntervalSince(startTime)
-            }
             isRunning = false
             
-            reset()
+            print("\(sessionDuration) секунд")
         }
         
         func reset() {
             isRunning = false
-            elapsedTime = 0
+            sessionDuration = 0
+            currentSession = nil
         }
         
-        func createSession(activity: Activity) -> Session {
+        func createSession(activity: Activity) {
             let dateFormatter = DateConverter.shared
             
             let newID = UUID().uuidString
@@ -55,7 +55,7 @@ extension ActivityView {
                 duration: sessionDuration
             )
             
-            return newSession
+            currentSession = newSession
         }
         
         private func sendFeedback(){

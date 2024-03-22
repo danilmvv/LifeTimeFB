@@ -28,22 +28,26 @@ class AuthService {
         }
     }
     
+    @MainActor
     func signUp(email: String, password: String) async throws {
         let result = try await Auth.auth().createUser(withEmail: email, password: password)
         try await insertUserRecord(user: result.user)
         updateState(user: result.user)
     }
     
+    @MainActor
     func signIn(email: String, password: String) async throws {
         let result = try await Auth.auth().signIn(withEmail: email, password: password)
         updateState(user: result.user)
     }
     
+    @MainActor
     func anonymousSignIn() async throws {
         let result = try await Auth.auth().signInAnonymously()
         try await insertUserRecord(user: result.user)
     }
     
+    @MainActor
     func linkEmail(email: String, password: String) async throws -> AuthDataResult? {
         let credential = EmailAuthProvider.credential(withEmail: email, password: password)
         

@@ -49,4 +49,17 @@ class DBService {
         
         try await dbRef.document(activity.id).setData(activity.asDictionary())
     }
+    
+    @MainActor
+    func saveSession(session: Session) async throws {
+        guard let uID = AuthService.shared.user?.uid else {
+            print("uID not found")
+            return
+        }
+        
+        let db = Firestore.firestore()
+        let dbRef = db.collection("users").document(uID).collection("sessions")
+        
+        try await dbRef.document(session.id).setData(session.asDictionary())
+    }
 }
