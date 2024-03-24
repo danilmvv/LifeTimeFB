@@ -12,6 +12,8 @@
 		3C0360622BFA4AAC00A8183D /* AddSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0360612BFA4AAC00A8183D /* AddSessionView.swift */; };
 		3C0360652BFA4B8F00A8183D /* AddSessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0360642BFA4B8F00A8183D /* AddSessionViewModel.swift */; };
 		3C03606B2BFA6BE700A8183D /* HistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C03606A2BFA6BE700A8183D /* HistoryItem.swift */; };
+		3C03606D2BFA971C00A8183D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3C03606C2BFA971C00A8183D /* README.md */; };
+		3C0360772BFA9C0900A8183D /* Frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C0360762BFA9C0900A8183D /* Frame.png */; };
 		3C32FD2D2BF2906600BE484B /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C32FD2C2BF2906600BE484B /* DateConverter.swift */; };
 		3C32FD2F2BF38C5D00BE484B /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C32FD2E2BF38C5D00BE484B /* AuthView.swift */; };
 		3C32FD322BF3A47400BE484B /* Color+isDark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C32FD312BF3A47400BE484B /* Color+isDark.swift */; };
@@ -65,6 +67,8 @@
 		3C0360612BFA4AAC00A8183D /* AddSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSessionView.swift; sourceTree = "<group>"; };
 		3C0360642BFA4B8F00A8183D /* AddSessionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSessionViewModel.swift; sourceTree = "<group>"; };
 		3C03606A2BFA6BE700A8183D /* HistoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItem.swift; sourceTree = "<group>"; };
+		3C03606C2BFA971C00A8183D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		3C0360762BFA9C0900A8183D /* Frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Frame.png; sourceTree = "<group>"; };
 		3C32FD2C2BF2906600BE484B /* DateConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConverter.swift; sourceTree = "<group>"; };
 		3C32FD2E2BF38C5D00BE484B /* AuthView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		3C32FD312BF3A47400BE484B /* Color+isDark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+isDark.swift"; sourceTree = "<group>"; };
@@ -140,6 +144,22 @@
 				3C03606A2BFA6BE700A8183D /* HistoryItem.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		3C03606E2BFA972A00A8183D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3C03606F2BFA98F300A8183D /* Images */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3C03606F2BFA98F300A8183D /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				3C0360762BFA9C0900A8183D /* Frame.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		3C32FD302BF3A46300BE484B /* Color */ = {
@@ -328,6 +348,7 @@
 			isa = PBXGroup;
 			children = (
 				3CD588DE2BE7E2BF0073F8DD /* LifeTime */,
+				3C03606C2BFA971C00A8183D /* README.md */,
 				3CD588DD2BE7E2BF0073F8DD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -349,6 +370,7 @@
 				3C7DE32E2BEBFA470026923F /* Views */,
 				3C7DE3492BEEA5F70026923F /* Service */,
 				3C7DE3502BEEAE050026923F /* Helpers */,
+				3C03606E2BFA972A00A8183D /* Resources */,
 				3CD588ED2BE7E48A0073F8DD /* GoogleService-Info.plist */,
 				3CD588E32BE7E2C10073F8DD /* Assets.xcassets */,
 				3CD588E52BE7E2C10073F8DD /* Preview Content */,
@@ -430,8 +452,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C0360772BFA9C0900A8183D /* Frame.png in Resources */,
 				3CD588E72BE7E2C10073F8DD /* Preview Assets.xcassets in Resources */,
 				3CD588E42BE7E2C10073F8DD /* Assets.xcassets in Resources */,
+				3C03606D2BFA971C00A8183D /* README.md in Resources */,
 				3CD588EE2BE7E48A0073F8DD /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
