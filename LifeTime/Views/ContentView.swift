@@ -25,6 +25,8 @@ struct ContentView: View {
     @Environment(DBService.self) private var dataService
     @State private var authService = AuthService.shared
     @State private var activeTab: Tab = .activity
+
+    @State private var showSplash = true
     
     var body: some View {
         ZStack {
@@ -61,6 +63,21 @@ struct ContentView: View {
                 }
             } else {
                 AuthView()
+            }
+        }
+        .overlay {
+            if showSplash {
+                withAnimation {
+                    SplashView()
+                        .transition(.opacity)
+                }
+            }
+        }
+        .onAppear() {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                withAnimation {
+                    self.showSplash = false
+                }
             }
         }
     }

@@ -27,6 +27,9 @@ struct EmailSignInView: View {
                                 await viewModel.linkEmail()
                                 if authService.authState == .signedIn {
                                     dismiss()
+                                } else {
+                                    authService.authLoadingState = .failed
+                                    print("Linking error")
                                 }
                             } else {
                                 print("SignIn")
@@ -35,11 +38,16 @@ struct EmailSignInView: View {
                                     dismiss()
                                 } else {
                                     viewModel.errorMessage = "Ошибка!"
+                                    authService.authLoadingState = .failed
                                 }
                             }
                         }
                     }
                     .padding(.vertical)
+                    
+                    if authService.authLoadingState == .loading {
+                        ProgressView()
+                    }
                     
                     Spacer()
                 }

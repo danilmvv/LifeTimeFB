@@ -16,6 +16,7 @@ struct ActivityView: View {
                 
                 VStack {
                     Spacer()
+                    Spacer()
                     
                     CircularProgressView(
                         currentActivity: $dataService.currentActivity,
@@ -30,12 +31,13 @@ struct ActivityView: View {
                                 if viewModel.isRunning {
                                     viewModel.stopTimer()
                                     
-                                    if viewModel.sessionDuration > 5 {
+                                    if viewModel.sessionDuration > 3 {
                                         viewModel.createSession(activity: dataService.currentActivity!)
                                         Task {
                                             do {
                                                 try await dataService.saveSession(session: viewModel.currentSession!)
                                                 viewModel.reset()
+                                                viewModel.showToast(message: "Сохранено!")
                                             } catch {
                                                 viewModel.showSavingAlert = true
                                                 print("Ошибка при сохранении")
@@ -67,6 +69,7 @@ struct ActivityView: View {
                     
                     
                     Spacer()
+                    Spacer()
                     ActivitySelector(isTimerRunning: $viewModel.isRunning)
                         .padding(.top)
                         .padding(.bottom, 25)
@@ -81,7 +84,7 @@ struct ActivityView: View {
                         .sensoryFeedback(.impact(flexibility: .soft), trigger: dataService.currentActivity)
                 }
             }
-            .navigationTitle("Активность")
+//            .navigationTitle("Активность")
             .alert("Не удалось сохранить", isPresented: $viewModel.showSavingAlert) {
                 Button("Повторить") {
                     Task {
@@ -100,6 +103,22 @@ struct ActivityView: View {
             .alert("Добавьте активность!", isPresented: $viewModel.showActivityAlert) {
                 Button("ОК", role: .cancel) {}
             }
+            .overlay(
+                VStack {
+                    if viewModel.showToast {
+                        ToastView(message: viewModel.toastMessage)
+                            .transition(.asymmetric(insertion: .move(edge: .top), removal: .opacity))
+                            .onAppear {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                    withAnimation {
+                                        viewModel.showToast = false
+                                    }
+                                }
+                            }
+                    }
+                    Spacer()
+                }
+            )
             .sheet(isPresented: $isSheetPresented, onDismiss: {
                 Task {
                     do {

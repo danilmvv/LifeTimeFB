@@ -16,6 +16,7 @@ enum AuthState {
 class AuthService {
     var user: User?
     var authState = AuthState.signedOut
+    var authLoadingState: LoadingState = .fetched
     
     private var currentNonce: String?
     
@@ -30,21 +31,28 @@ class AuthService {
     
     @MainActor
     func signUp(email: String, password: String) async throws {
+        authLoadingState = .loading
         let result = try await Auth.auth().createUser(withEmail: email, password: password)
         try await insertUserRecord(user: result.user)
+        
         updateState(user: result.user)
     }
     
     @MainActor
     func signIn(email: String, password: String) async throws {
+        authLoadingState = .loading
         let result = try await Auth.auth().signIn(withEmail: email, password: password)
+        
         updateState(user: result.user)
     }
     
     @MainActor
     func anonymousSignIn() async throws {
+        authLoadingState = .loading
         let result = try await Auth.auth().signInAnonymously()
         try await insertUserRecord(user: result.user)
+        
+        updateState(user: result.user)
     }
     
     @MainActor
@@ -82,6 +90,8 @@ class AuthService {
         } else {
             self.authState = .signedOut
         }
+        
+        authLoadingState = .fetched
     }
 }
 

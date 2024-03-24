@@ -9,6 +9,8 @@ extension ActivityView {
         var loadingState = LoadingState.fetched
         var showSavingAlert: Bool = false
         var showActivityAlert: Bool = false
+        var showToast: Bool = false
+        var toastMessage = ""
         
         var currentSession: Session?
         var isRunning: Bool = false
@@ -58,10 +60,16 @@ extension ActivityView {
             currentSession = newSession
         }
         
-        private func sendFeedback(){
+        func sendFeedback(){
             AudioServicesPlayAlertSoundWithCompletion(soundID, nil)
             AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate), {})
         }
         
+        func showToast(message: String) {
+            toastMessage = message
+            withAnimation {
+                showToast = true
+            }
+        }
     }
 }

@@ -12,6 +12,10 @@ struct AuthView: View {
                     .ignoresSafeArea()
                 
                 VStack {
+                    if authService.authLoadingState == .loading {
+                        ProgressView()
+                    }
+                    
                     Button {
                         showEmailSignIn.toggle()
                     } label: {
@@ -47,6 +51,7 @@ struct AuthView: View {
                             do {
                                 try await authService.anonymousSignIn()
                             } catch {
+                                authService.authLoadingState = .failed
                                 print(error)
                             }
                         }
