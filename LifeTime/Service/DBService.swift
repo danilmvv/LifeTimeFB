@@ -14,6 +14,7 @@ class DBService {
     var currentActivity: Activity?
     
     var activitiesLoadingState: LoadingState = .fetched
+    var sessionsLoadingState: LoadingState = .fetched
     
     @MainActor
     func getData() async throws {
@@ -22,19 +23,29 @@ class DBService {
             return
         }
         
-        activitiesLoadingState = .loading
-        
         let db = Firestore.firestore()
-        let dbRef = db.collection("users").document(uID).collection("activities")
+        let activitiesRef = db.collection("users").document(uID).collection("activities")
+        let sessionsRef = db.collection("users").document(uID).collection("sessions")
         
-        let snapshot = try await dbRef.getDocuments()
-        
-        let downloaded: [Activity] = try snapshot.documents.map { document in
+        // Activities download
+        activitiesLoadingState = .loading
+        let activitiesSnapshot = try await activitiesRef.getDocuments()
+        let downloadedActivities: [Activity] = try activitiesSnapshot.documents.map { document in
             try document.data(as: Activity.self)
         }
         
-        self.activities = downloaded.sorted { $0.dateAdded > $1.dateAdded }
+        self.activities = downloadedActivities.sorted { $0.dateAdded > $1.dateAdded }
         activitiesLoadingState = .fetched
+        
+        // Sessions download
+        sessionsLoadingState = .loading
+        let sessionsSnapshot = try await sessionsRef.getDocuments()
+        let downloadedSessions: [Session] = try sessionsSnapshot.documents.map { document in
+            try document.data(as: Session.self)
+        }
+        
+        self.sessions = downloadedSessions.sorted { $0.dateStarted > $1.dateStarted }
+        sessionsLoadingState = .fetched
     }
     
     @MainActor

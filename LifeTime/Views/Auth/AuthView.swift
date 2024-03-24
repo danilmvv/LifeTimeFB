@@ -11,10 +11,15 @@ struct AuthView: View {
                 Color.backgroundPrimary
                     .ignoresSafeArea()
                 
-                VStack {
+                VStack(spacing: 16) {
                     if authService.authLoadingState == .loading {
                         ProgressView()
                     }
+                    
+                    Text("Привяжите свою учетную запись, чтобы безопасно сохранить данные в облаке и обеспечить синхронизацию на всех ваших устройствах.")
+                        .multilineTextAlignment(.center)
+                        .foregroundStyle(.textSecondary)
+                        .padding(.horizontal)
                     
                     Button {
                         showEmailSignIn.toggle()
@@ -33,18 +38,17 @@ struct AuthView: View {
                                 .fill(.ultraThinMaterial)
                         }
                     }
-                    .padding(.horizontal)
                     .padding(.top)
                     
-                    
                     Button {
-                        ///
+                        print("Пока не работает :(")
                     } label: {
                         SignInWithAppleButtonViewRepresentable(type: .default, style: .white)
                             .allowsHitTesting(false)
                     }
-                    .frame(height: 55)
-                    .padding(.horizontal)
+                    .frame(height: 50)
+                    
+                    Spacer()
                     
                     Button {
                         Task {
@@ -60,10 +64,10 @@ struct AuthView: View {
                             .font(.headline)
                             .foregroundStyle(.textSecondary)
                     }
-                    .padding()
+                    .padding(.vertical)
                     
-                    Spacer()
                 }
+                .padding()
             }
             .navigationTitle("Привязать аккаунт")
             .sheet(isPresented: $showEmailSignIn) {

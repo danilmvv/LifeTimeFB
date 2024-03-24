@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		3C03605E2BFA39BA00A8183D /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C03605D2BFA39BA00A8183D /* ToastView.swift */; };
 		3C0360602BFA40AE00A8183D /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C03605F2BFA40AE00A8183D /* SplashView.swift */; };
+		3C0360622BFA4AAC00A8183D /* AddSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0360612BFA4AAC00A8183D /* AddSessionView.swift */; };
+		3C0360652BFA4B8F00A8183D /* AddSessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0360642BFA4B8F00A8183D /* AddSessionViewModel.swift */; };
+		3C03606B2BFA6BE700A8183D /* HistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C03606A2BFA6BE700A8183D /* HistoryItem.swift */; };
 		3C32FD2D2BF2906600BE484B /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C32FD2C2BF2906600BE484B /* DateConverter.swift */; };
 		3C32FD2F2BF38C5D00BE484B /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C32FD2E2BF38C5D00BE484B /* AuthView.swift */; };
 		3C32FD322BF3A47400BE484B /* Color+isDark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C32FD312BF3A47400BE484B /* Color+isDark.swift */; };
@@ -59,6 +62,9 @@
 /* Begin PBXFileReference section */
 		3C03605D2BFA39BA00A8183D /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		3C03605F2BFA40AE00A8183D /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		3C0360612BFA4AAC00A8183D /* AddSessionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSessionView.swift; sourceTree = "<group>"; };
+		3C0360642BFA4B8F00A8183D /* AddSessionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSessionViewModel.swift; sourceTree = "<group>"; };
+		3C03606A2BFA6BE700A8183D /* HistoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItem.swift; sourceTree = "<group>"; };
 		3C32FD2C2BF2906600BE484B /* DateConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConverter.swift; sourceTree = "<group>"; };
 		3C32FD2E2BF38C5D00BE484B /* AuthView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		3C32FD312BF3A47400BE484B /* Color+isDark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+isDark.swift"; sourceTree = "<group>"; };
@@ -119,6 +125,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3C0360632BFA4B3D00A8183D /* AddSession */ = {
+			isa = PBXGroup;
+			children = (
+				3C0360612BFA4AAC00A8183D /* AddSessionView.swift */,
+				3C0360642BFA4B8F00A8183D /* AddSessionViewModel.swift */,
+			);
+			path = AddSession;
+			sourceTree = "<group>";
+		};
+		3C0360692BFA6BD600A8183D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				3C03606A2BFA6BE700A8183D /* HistoryItem.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		3C32FD302BF3A46300BE484B /* Color */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +192,8 @@
 			isa = PBXGroup;
 			children = (
 				3C56C9572BF106EF000DD283 /* HistoryView.swift */,
+				3C0360632BFA4B3D00A8183D /* AddSession */,
+				3C0360692BFA6BD600A8183D /* Components */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -421,10 +446,12 @@
 				3C7DE33E2BEE6CAE0026923F /* AuthTextField.swift in Sources */,
 				3C56C93D2BF0BD0E000DD283 /* SettingsViewModel.swift in Sources */,
 				3C32FD342BF3A5AC00BE484B /* Color+Random.swift in Sources */,
+				3C0360652BFA4B8F00A8183D /* AddSessionViewModel.swift in Sources */,
 				3C7DE3732BEF8C4C0026923F /* View+Styles.swift in Sources */,
 				3C7DE36B2BEF60F70026923F /* CustomTextField.swift in Sources */,
 				3C32FD2F2BF38C5D00BE484B /* AuthView.swift in Sources */,
 				3C56C9502BF0FC04000DD283 /* SecondaryAppButton.swift in Sources */,
+				3C0360622BFA4AAC00A8183D /* AddSessionView.swift in Sources */,
 				3C7DE3522BEEAE190026923F /* Validator.swift in Sources */,
 				3C7DE34D2BEEA9530026923F /* EmailSignInViewModel.swift in Sources */,
 				3C56C94A2BF0E649000DD283 /* ActivityListView.swift in Sources */,
@@ -441,6 +468,7 @@
 				3C56C9522BF0FDC3000DD283 /* AddActivityView.swift in Sources */,
 				3C32FD2D2BF2906600BE484B /* DateConverter.swift in Sources */,
 				3C7DE37F2BEFDE4F0026923F /* ActivitySelector.swift in Sources */,
+				3C03606B2BFA6BE700A8183D /* HistoryItem.swift in Sources */,
 				3CD588E02BE7E2BF0073F8DD /* LifeTimeApp.swift in Sources */,
 				3C56C9662BF131C2000DD283 /* CustomNumberField.swift in Sources */,
 				3C03605E2BFA39BA00A8183D /* ToastView.swift in Sources */,
