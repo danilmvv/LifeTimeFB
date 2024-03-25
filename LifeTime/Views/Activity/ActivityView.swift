@@ -34,9 +34,10 @@ struct ActivityView: View {
                                         Task {
                                             do {
                                                 try await dataService.saveSession(session: viewModel.currentSession!)
-                                                viewModel.reset()
+                                                viewModel.resetTimer()
                                                 viewModel.showToast(message: "Сохранено!")
                                                 try await dataService.getData()
+                                                viewModel.resetDuration()
                                             } catch {
                                                 viewModel.showSavingAlert = true
                                                 print("Ошибка при сохранении")

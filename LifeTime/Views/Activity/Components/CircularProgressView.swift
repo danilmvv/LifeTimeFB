@@ -5,10 +5,15 @@ struct CircularProgressView: View {
     
     @Binding var sessionDuration: TimeInterval
     @Binding var showTime: Bool
+    
+    var currentProgress: Double {
+        guard let currentActivity = dataService.currentActivity else { return 0 }
+        return dataService.goalProgress + sessionDuration / currentActivity.goal
+    }
         
     var body: some View {
         @Bindable var dataService = dataService
-        
+                
         ZStack {
             Circle()
                 .stroke(style: StrokeStyle(lineWidth: 20,lineCap: .butt, dash: [2,6]))
@@ -17,11 +22,11 @@ struct CircularProgressView: View {
                 .opacity(0.2)
             
             Circle()
-                .trim(from: 0.0, to: min(dataService.goalProgress, 1.0))
+                .trim(from: 0.0, to: min(currentProgress, 1.0))
                 .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .butt, dash: [2,6]))
                 .foregroundStyle(.appWhite)
                 .rotationEffect(Angle(degrees: 270.0))
-                .animation(.spring(), value: dataService.goalProgress)
+                .animation(.spring(), value: currentProgress)
             
             VStack(spacing: 20) {
                 if showTime {

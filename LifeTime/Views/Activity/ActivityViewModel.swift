@@ -39,9 +39,17 @@ extension ActivityView {
         }
         
         func reset() {
+            resetTimer()
+            resetDuration()
+        }
+        
+        func resetTimer() {
             isRunning = false
-            sessionDuration = 0
             currentSession = nil
+        }
+        
+        func resetDuration() {
+            sessionDuration = 0
         }
         
         func createSession(activity: Activity) {

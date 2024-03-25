@@ -26,6 +26,7 @@ struct CustomNumberField: View {
     
     var numberFormatter: NumberFormatter {
         let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
         formatter.zeroSymbol = ""
         formatter.maximumFractionDigits = 1
         
