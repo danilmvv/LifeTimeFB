@@ -42,9 +42,13 @@ struct AddSessionView: View {
                     
                     Spacer()
                     
-                    DatePicker("Select Date", selection: $viewModel.selectedDate, displayedComponents: [.date])
-                        .datePickerStyle(.compact)
+                    VStack {
+                        Text("День")
+                            .font(.headline)
+                        DatePicker("Select Date", selection: $viewModel.selectedDate, displayedComponents: [.date])
+                            .datePickerStyle(.compact)
                         .labelsHidden()
+                    }
                 }
                 .padding()
                 .background {

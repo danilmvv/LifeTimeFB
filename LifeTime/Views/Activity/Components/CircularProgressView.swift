@@ -1,12 +1,14 @@
 import SwiftUI
 
-struct CircularProgressView: View {
-    @Binding var currentActivity: Activity?
-    @Binding var sessionDuration: TimeInterval
-    @Binding var progress: Double
-    @Binding var showTime: Bool
+struct CircularProgressView: View {    
+    @Environment(DBService.self) private var dataService
     
+    @Binding var sessionDuration: TimeInterval
+    @Binding var showTime: Bool
+        
     var body: some View {
+        @Bindable var dataService = dataService
+        
         ZStack {
             Circle()
                 .stroke(style: StrokeStyle(lineWidth: 20,lineCap: .butt, dash: [2,6]))
@@ -15,11 +17,11 @@ struct CircularProgressView: View {
                 .opacity(0.2)
             
             Circle()
-                .trim(from: 0.0, to: min(progress, 1.0))
+                .trim(from: 0.0, to: min(dataService.goalProgress, 1.0))
                 .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .butt, dash: [2,6]))
                 .foregroundStyle(.appWhite)
                 .rotationEffect(Angle(degrees: 270.0))
-                .animation(.spring(), value: progress)
+                .animation(.spring(), value: dataService.goalProgress)
             
             VStack(spacing: 20) {
                 if showTime {
@@ -40,6 +42,6 @@ struct CircularProgressView: View {
 
 
 #Preview {
-    CircularProgressView(currentActivity: .constant(Activity.default), sessionDuration: .constant(0), progress: .constant(0.1), showTime: .constant(false))
+    CircularProgressView(sessionDuration: .constant(0), showTime: .constant(false))
         .frame(width: 320, height: 320)
 }

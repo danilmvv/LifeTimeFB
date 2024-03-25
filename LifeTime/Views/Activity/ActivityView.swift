@@ -19,9 +19,7 @@ struct ActivityView: View {
                     Spacer()
                     
                     CircularProgressView(
-                        currentActivity: $dataService.currentActivity,
                         sessionDuration: $viewModel.sessionDuration,
-                        progress: .constant(0.42),
                         showTime: $viewModel.isRunning
                     )
                     .frame(width: 300, height: 300)
@@ -38,6 +36,7 @@ struct ActivityView: View {
                                                 try await dataService.saveSession(session: viewModel.currentSession!)
                                                 viewModel.reset()
                                                 viewModel.showToast(message: "Сохранено!")
+                                                try await dataService.getData()
                                             } catch {
                                                 viewModel.showSavingAlert = true
                                                 print("Ошибка при сохранении")
@@ -60,10 +59,10 @@ struct ActivityView: View {
                     Spacer()
                     
                     if !dataService.activities.isEmpty {
-                        ProgressInfo()
+                        ProgressInfo(sessionDuration: $viewModel.sessionDuration)
                     } else {
                         // Placeholder
-                        ProgressInfo()
+                        ProgressInfo(sessionDuration: $viewModel.sessionDuration)
                             .opacity(0)
                     }
                     
@@ -84,7 +83,7 @@ struct ActivityView: View {
                         .sensoryFeedback(.impact(flexibility: .soft), trigger: dataService.currentActivity)
                 }
             }
-//            .navigationTitle("Активность")
+            //            .navigationTitle("Активность")
             .alert("Не удалось сохранить", isPresented: $viewModel.showSavingAlert) {
                 Button("Повторить") {
                     Task {

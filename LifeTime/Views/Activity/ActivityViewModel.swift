@@ -60,6 +60,20 @@ extension ActivityView {
             currentSession = newSession
         }
         
+        func getPercentage(_ goal: TimeInterval, _ progress: TimeInterval) -> Double {
+            if progress > 0 {
+                return progress / goal * 100
+            } else {
+                return 0
+            }
+        }
+        
+        private func formatDate(_ date: String) -> Date {
+            let formatted = DateConverter.shared.getDateFromString(date) ?? Date()
+            
+            return formatted
+        }
+        
         func sendFeedback(){
             AudioServicesPlayAlertSoundWithCompletion(soundID, nil)
             AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate), {})

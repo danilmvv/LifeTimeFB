@@ -10,11 +10,87 @@ class DBService {
     
     var activities: [Activity] = []
     var sessions: [Session] = []
-    
     var currentActivity: Activity?
     
     var activitiesLoadingState: LoadingState = .fetched
     var sessionsLoadingState: LoadingState = .fetched
+    
+    var totalDuration: TimeInterval {
+        guard let currentActivity = currentActivity else { return 0 }
+        
+        let totalDuration = getTotalDuration(activity: currentActivity)
+        return totalDuration
+    }
+    
+    var goalProgress: Double {
+        guard let currentActivity = currentActivity else { return 0 }
+        
+        if totalDuration > 0 {
+            let progress = getProgress(activity: currentActivity, duration: totalDuration)
+            return progress
+        }
+        
+        return 0
+    }
+    
+    private func getProgress(activity: Activity, duration: TimeInterval) -> Double {
+        let totalDuration = duration
+        let progress = totalDuration / activity.goal
+        
+        //        String(format: "%.2f%%", progress * 100)
+        return progress
+    }
+    
+    private func getTotalDuration(activity: Activity) -> TimeInterval {
+        let filteredSessions = filterSessions(activity: activity)
+        let totalDuration = filteredSessions.reduce(0) { $0 + $1.duration }
+        
+        return totalDuration
+    }
+    
+    private func filterSessions(activity: Activity) -> [Session] {
+        let today = Date()
+        let calendar = Calendar.current
+        
+        let currentActivitySessions = sessions.filter { $0.activityID == activity.id }
+        var filteredSessions: [Session] = []
+        
+        switch GoalType(rawValue: activity.goalType) {
+        case .daily:
+            let startOfDay = calendar.startOfDay(for: today)
+            let endOfDay = calendar.date(byAdding: .second, value: 86399, to: startOfDay)!
+            filteredSessions = currentActivitySessions.filter {
+                formatDate($0.dateStarted) >= startOfDay && formatDate($0.dateStarted) <= endOfDay
+            }
+            
+        case .weekly:
+            let components = calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: today)
+            let startOfWeek = calendar.date(from: components)!
+            let endOfWeek = calendar.date(byAdding: .second, value: 604799, to: startOfWeek)!
+            
+            filteredSessions = currentActivitySessions.filter {
+                calendar.isDate(formatDate($0.dateStarted), inSameDayAs: startOfWeek)
+                || (formatDate($0.dateStarted) > startOfWeek && formatDate($0.dateStarted) <= endOfWeek) }
+            
+        case .monthly:
+            let startOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: today))!
+            let endOfMonth = calendar.date(byAdding: DateComponents(month: 1, day: -1), to: startOfMonth)!
+            
+            filteredSessions = currentActivitySessions.filter {
+                formatDate($0.dateStarted) >= startOfMonth && formatDate($0.dateStarted) <= endOfMonth
+            }
+        default:
+            filteredSessions = currentActivitySessions
+        }
+        
+        return filteredSessions
+    }
+    
+    private func formatDate(_ date: String) -> Date {
+        let formatted = DateConverter.shared.getDateFromString(date) ?? Date()
+        
+        return formatted
+    }
     
     @MainActor
     func getData() async throws {
