@@ -49,4 +49,5 @@ struct CircularProgressView: View {
 #Preview {
     CircularProgressView(sessionDuration: .constant(0), showTime: .constant(false))
         .frame(width: 320, height: 320)
+        .environment(DBService())
 }

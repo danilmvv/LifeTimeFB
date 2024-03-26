@@ -2,21 +2,14 @@ import SwiftUI
 
 struct HistoryItem: View {
     @Environment(DBService.self) private var dataService
+    var title: String
     var session: Session
-    
-    private var activityDictionary: [String: Activity] {
-        Dictionary(uniqueKeysWithValues: dataService.activities.map { ($0.id, $0) })
-    }
-    
-    private func getActivityTitle(session: Session) -> String {
-        activityDictionary[session.activityID]?.title ?? "Неизвестное"
-    }
     
     var body: some View {
 //        Text(getActivityTitle(session: session))
         HStack {
             VStack(alignment: .leading) {
-                Text(getActivityTitle(session: session))
+                Text(title)
                     .font(.headline)
                 Text("\(session.duration.formatTime())")
                     .foregroundColor(.gray)
@@ -38,6 +31,6 @@ struct HistoryItem: View {
 }
 
 #Preview {
-    HistoryItem(session: Session.default)
+    HistoryItem(title: "Неизвестное", session: Session.default)
         .environment(DBService())
 }

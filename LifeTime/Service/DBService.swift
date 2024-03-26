@@ -7,7 +7,6 @@ import FirebaseFirestoreSwift
 @Observable
 class DBService {
     var userID: String?
-    
     var activities: [Activity] = []
     var sessions: [Session] = []
     var currentActivity: Activity?
@@ -33,6 +32,8 @@ class DBService {
         return 0
     }
     
+    //MARK: Progress functions
+    
     private func getProgress(activity: Activity, duration: TimeInterval) -> Double {
         let totalDuration = duration
         let progress = totalDuration / activity.goal
@@ -42,13 +43,13 @@ class DBService {
     }
     
     private func getTotalDuration(activity: Activity) -> TimeInterval {
-        let filteredSessions = filterSessions(activity: activity)
+        let filteredSessions = filterSessionsByGoalType(activity: activity)
         let totalDuration = filteredSessions.reduce(0) { $0 + $1.duration }
         
         return totalDuration
     }
     
-    private func filterSessions(activity: Activity) -> [Session] {
+    private func filterSessionsByGoalType(activity: Activity) -> [Session] {
         let today = Date()
         let calendar = Calendar.current
         
@@ -92,6 +93,8 @@ class DBService {
         return formatted
     }
     
+    //MARK: Data functions
+    
     @MainActor
     func getData() async throws {
         guard let uID = AuthService.shared.user?.uid else {
@@ -99,29 +102,25 @@ class DBService {
             return
         }
         
+        // Download Sessions
+        try await updateCollection(uID: uID, collectionName: "sessions", loadingState: &sessionsLoadingState, data: &sessions, sortKeyPath: \Session.dateStarted)
+        
+        // Download Activities
+        try await updateCollection(uID: uID, collectionName: "activities", loadingState: &activitiesLoadingState, data: &activities, sortKeyPath: \Activity.dateAdded)
+    }
+    
+    private func updateCollection<T: Codable & Identifiable>(uID: String, collectionName: String, loadingState: inout LoadingState, data: inout [T], sortKeyPath: KeyPath<T, String>) async throws {
         let db = Firestore.firestore()
-        let activitiesRef = db.collection("users").document(uID).collection("activities")
-        let sessionsRef = db.collection("users").document(uID).collection("sessions")
+        let collectionRef = db.collection("users").document(uID).collection(collectionName)
         
-        // Activities download
-        activitiesLoadingState = .loading
-        let activitiesSnapshot = try await activitiesRef.getDocuments()
-        let downloadedActivities: [Activity] = try activitiesSnapshot.documents.map { document in
-            try document.data(as: Activity.self)
+        loadingState = .loading
+        let snapshot = try await collectionRef.getDocuments()
+        let downloadedData: [T] = try snapshot.documents.map { document in
+            try document.data(as: T.self)
         }
         
-        self.activities = downloadedActivities.sorted { $0.dateAdded > $1.dateAdded }
-        activitiesLoadingState = .fetched
-        
-        // Sessions download
-        sessionsLoadingState = .loading
-        let sessionsSnapshot = try await sessionsRef.getDocuments()
-        let downloadedSessions: [Session] = try sessionsSnapshot.documents.map { document in
-            try document.data(as: Session.self)
-        }
-        
-        self.sessions = downloadedSessions.sorted { $0.dateStarted > $1.dateStarted }
-        sessionsLoadingState = .fetched
+        data = downloadedData.sorted { $0[keyPath: sortKeyPath] > $1[keyPath: sortKeyPath] }
+        loadingState = .fetched
     }
     
     @MainActor
@@ -148,5 +147,27 @@ class DBService {
         let dbRef = db.collection("users").document(uID).collection("sessions")
         
         try await dbRef.document(session.id).setData(session.asDictionary())
+    }
+    
+    func deleteSession(id: String) {
+        guard let uID = AuthService.shared.user?.uid else {
+            print("uID not found")
+            return
+        }
+        
+        let db = Firestore.firestore()
+        
+        db.collection("users")
+            .document(uID)
+            .collection("sessions")
+            .document(id)
+            .delete{ [weak self] error in
+                if let error = error {
+                    print("Error deleting session: \(error.localizedDescription)")
+                } else {
+                    self?.sessions.removeAll { $0.id == id }
+                    print("Session deleted successfully")
+                }
+            }
     }
 }

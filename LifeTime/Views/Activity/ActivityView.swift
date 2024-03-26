@@ -84,7 +84,7 @@ struct ActivityView: View {
                         .sensoryFeedback(.impact(flexibility: .soft), trigger: dataService.currentActivity)
                 }
             }
-            //            .navigationTitle("Активность")
+//            .navigationTitle("Активность")
             .alert("Не удалось сохранить", isPresented: $viewModel.showSavingAlert) {
                 Button("Повторить") {
                     Task {
