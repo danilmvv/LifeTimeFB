@@ -32,9 +32,9 @@ extension AddSessionView {
             let newSession = Session(
                 id: newID,
                 activityID: activity.id,
-                dateStarted: dateFormatter.getStringFromDate(startTime),
+                dateStarted: dateFormatter.getStringFromDate(selectedDate),
                 startTime: dateFormatter.getTimeString(startTime),
-                endTime: dateFormatter.getTimeString(Date()),
+                endTime: dateFormatter.getTimeString(endTime),
                 duration: duration
             )
             

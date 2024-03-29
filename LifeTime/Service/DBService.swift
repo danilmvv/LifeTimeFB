@@ -149,6 +149,62 @@ class DBService {
         try await dbRef.document(session.id).setData(session.asDictionary())
     }
     
+    func deleteActivity(id: String) {
+        guard let uID = AuthService.shared.user?.uid else {
+            print("uID not found")
+            return
+        }
+
+        let db = Firestore.firestore()
+
+        db.collection("users")
+            .document(uID)
+            .collection("activities")
+            .document(id)
+            .delete { [weak self] error in
+                if let error = error {
+                    print("Error deleting activity: \(error)")
+                } else {
+                    self?.activities.removeAll { $0.id == id }
+                    self?.deleteSessionsForActivity(activityID: id)
+                    
+                    if let currentActivity = self?.currentActivity {
+                        if id == currentActivity.id {
+                            self?.currentActivity = self?.activities.first
+                        }
+                    }
+                }
+            }
+    }
+    
+    func deleteSessionsForActivity(activityID: String) {
+        guard let uID = AuthService.shared.user?.uid else {
+            print("uID not found")
+            return
+        }
+        
+        let db = Firestore.firestore()
+        let batch = db.batch()
+        
+        let sessionsToDelete = sessions.filter { $0.activityID == activityID}
+        sessionsToDelete.forEach { session in
+            let sessionRef = db.collection("users")
+                .document(uID)
+                .collection("sessions")
+                .document(session.id)
+            
+            batch.deleteDocument(sessionRef)
+        }
+        
+        batch.commit { [weak self] error in
+            if let error = error {
+                print("Error deleting sessions: \(error)")
+            } else {
+                self?.sessions.removeAll { $0.activityID == activityID }
+            }
+        }
+    }
+    
     func deleteSession(id: String) {
         guard let uID = AuthService.shared.user?.uid else {
             print("uID not found")
@@ -166,7 +222,6 @@ class DBService {
                     print("Error deleting session: \(error.localizedDescription)")
                 } else {
                     self?.sessions.removeAll { $0.id == id }
-                    print("Session deleted successfully")
                 }
             }
     }

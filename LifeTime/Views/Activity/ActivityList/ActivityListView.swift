@@ -5,6 +5,8 @@ struct ActivityListView: View {
     @Environment(\.dismiss) var dismiss
     
     @State private var showAddActivityView: Bool = false
+    @State private var confirmationShown = false
+    @State private var activityToDelete: Activity?
     
     var body: some View {
         ZStack {
@@ -27,6 +29,30 @@ struct ActivityListView: View {
                                 print(activity.title)
                                 dataService.currentActivity = activity
                                 dismiss()
+                            }
+                            .contextMenu {
+                                Button {
+                                    
+                                } label: {
+                                    Label("Изменить", systemImage: "pencil")
+                                }
+                                
+                                Button(role: .destructive) {
+                                    confirmationShown = true
+                                } label: {
+                                    Label("Удалить", systemImage: "trash")
+                                }
+                            }
+                            .confirmationDialog(
+                                "Вы уверены?",
+                                isPresented: $confirmationShown,
+                                titleVisibility: .visible
+                            ) {
+                                Button("Да", role: .destructive) {
+                                    withAnimation {
+                                        dataService.deleteActivity(id: activity.id)
+                                    }
+                                }
                             }
                     }
                     .transition(.slide)
