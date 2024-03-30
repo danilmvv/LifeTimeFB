@@ -8,7 +8,7 @@ struct CircularProgressView: View {
     
     var currentProgress: Double {
         guard let currentActivity = dataService.currentActivity else { return 0 }
-        return dataService.goalProgress + sessionDuration / currentActivity.goal
+        return dataService.currentActivityGoalProgress + sessionDuration / currentActivity.goal
     }
         
     var body: some View {
@@ -16,14 +16,14 @@ struct CircularProgressView: View {
                 
         ZStack {
             Circle()
-                .stroke(style: StrokeStyle(lineWidth: 20,lineCap: .butt, dash: [2,6]))
+                .stroke(style: StrokeStyle(lineWidth: 24, lineCap: .butt, dash: [2,4]))
                 .foregroundStyle(.appWhite)
                 .rotationEffect(Angle(degrees: 270.0))
                 .opacity(0.2)
             
             Circle()
                 .trim(from: 0.0, to: min(currentProgress, 1.0))
-                .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .butt, dash: [2,6]))
+                .stroke(style: StrokeStyle(lineWidth: 24, lineCap: .butt, dash: [2,4]))
                 .foregroundStyle(.appWhite)
                 .rotationEffect(Angle(degrees: 270.0))
                 .animation(.spring(), value: currentProgress)

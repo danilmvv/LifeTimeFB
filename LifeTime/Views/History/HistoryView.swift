@@ -17,13 +17,13 @@ struct HistoryView: View {
         }
     }
     
-    private var filterTitle: String {
-        if let activity = selectedFilterActivity {
-            return activity.title
-        } else {
-            return "История"
-        }
-    }
+//    private var filterTitle: String {
+//        if let activity = selectedFilterActivity {
+//            return activity.title
+//        } else {
+//            return "История"
+//        }
+//    }
     
     var body: some View {
         NavigationStack {
@@ -48,7 +48,6 @@ struct HistoryView: View {
                     }
                     .scrollContentBackground(.hidden)
                     .animation(.default, value: dataService.sessions)
-//                    .animation(.bouncy, value: filteredSessions)
                 } else {
                     VStack {
                         Image(systemName: "clock")
@@ -63,7 +62,7 @@ struct HistoryView: View {
                     }
                 }
             }
-            .navigationTitle(filterTitle)
+            .navigationTitle("История")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button {
@@ -113,15 +112,7 @@ struct HistoryView: View {
                 }
             }
             .tint(.accent)
-            .sheet(isPresented: $isSheetPresented, onDismiss: {
-                Task {
-                    do {
-                        try await dataService.getData()
-                    } catch {
-                        print(error)
-                    }
-                }
-            }) {
+            .sheet(isPresented: $isSheetPresented) {
                 AddSessionView()
                     .presentationDetents([.medium])
             }

@@ -81,15 +81,7 @@ struct AddSessionView: View {
             }
             .padding()
         }
-        .sheet(isPresented: $isSheetPresented, onDismiss: {
-            Task {
-                do {
-                    try await dataService.getData()
-                } catch {
-                    print(error)
-                }
-            }
-        }) {
+        .sheet(isPresented: $isSheetPresented) {
             if dataService.activities.isEmpty {
                 AddActivityView()
                     .presentationDragIndicator(.visible)

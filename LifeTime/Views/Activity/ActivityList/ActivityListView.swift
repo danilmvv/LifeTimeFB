@@ -5,8 +5,11 @@ struct ActivityListView: View {
     @Environment(\.dismiss) var dismiss
     
     @State private var showAddActivityView: Bool = false
-    @State private var confirmationShown = false
     @State private var activityToDelete: Activity?
+    @State private var confirmationShown = false
+    
+    @State private var activityToEdit: Activity?
+    @State private var showingEditActivityView = false
     
     var body: some View {
         ZStack {
@@ -32,7 +35,8 @@ struct ActivityListView: View {
                             }
                             .contextMenu {
                                 Button {
-                                    
+                                    activityToEdit = activity
+                                    showingEditActivityView = true
                                 } label: {
                                     Label("Изменить", systemImage: "pencil")
                                 }
@@ -67,15 +71,10 @@ struct ActivityListView: View {
                 .animation(.easeInOut, value: dataService.activities)
             }
         }
-        .fullScreenCover(isPresented: $showAddActivityView, onDismiss: {
-            Task {
-                do {
-                    try await dataService.getData()
-                } catch {
-                    print(error)
-                }
-            }
-        }) {
+        .fullScreenCover(item: $activityToEdit) { activity in
+            EditActivityView(activity: activity)
+        }
+        .fullScreenCover(isPresented: $showAddActivityView) {
             AddActivityView()
         }
     }

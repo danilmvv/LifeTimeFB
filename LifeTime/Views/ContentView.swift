@@ -55,7 +55,7 @@ struct ContentView: View {
                 .tint(.appWhite)
                 .task {
                     do {
-                        try await dataService.getData()
+                        try await dataService.fetchData()
                         dataService.currentActivity = dataService.activities.first
                     } catch {
                         print(error)

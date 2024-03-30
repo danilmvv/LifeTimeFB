@@ -9,7 +9,8 @@ struct ActivitySelector: View {
             if !dataService.activities.isEmpty {
                 if let currentActivity = dataService.currentActivity {
                     Text(currentActivity.title)
-                        .padding()
+                        .padding(.horizontal)
+                        .padding(.vertical, 12)
                         .frame(maxWidth: .infinity)
                         .foregroundStyle(
                             getTextColor(color: Color.fromHexString(currentActivity.color))
@@ -46,11 +47,13 @@ struct ActivitySelector: View {
                 switch dataService.activitiesLoadingState {
                 case .loading:
                     ProgressView()
-                        .padding()
+                        .padding(.horizontal)
+                        .padding(.vertical, 12)
                         .frame(maxWidth: .infinity)
                 case .fetched:
                     Text("Создать активность")
-                        .padding()
+                        .padding(.horizontal)
+                        .padding(.vertical, 12)
                         .foregroundStyle(.textPrimary)
                         .font(.headline)
                         .frame(maxWidth: .infinity)
@@ -67,7 +70,7 @@ struct ActivitySelector: View {
                     ? Color.fromHexString(dataService.currentActivity!.color)
                     : Color.backgroundSecondary
                 )
-                .shadow(radius: 4)
+                .shadow(radius: 10)
         }
     }
     

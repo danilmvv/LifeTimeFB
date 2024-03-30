@@ -16,7 +16,6 @@ struct ActivityView: View {
                 
                 VStack {
                     Spacer()
-                    Spacer()
                     
                     CircularProgressView(
                         sessionDuration: $viewModel.sessionDuration,
@@ -34,10 +33,8 @@ struct ActivityView: View {
                                         Task {
                                             do {
                                                 try await dataService.saveSession(session: viewModel.currentSession!)
-                                                viewModel.resetTimer()
+                                                viewModel.reset()
                                                 viewModel.showToast(message: "Сохранено!")
-                                                try await dataService.getData()
-                                                viewModel.resetDuration()
                                             } catch {
                                                 viewModel.showSavingAlert = true
                                                 print("Ошибка при сохранении")
@@ -59,21 +56,17 @@ struct ActivityView: View {
                     
                     Spacer()
                     
-                    if !dataService.activities.isEmpty {
+                    HStack {
                         ProgressInfo(sessionDuration: $viewModel.sessionDuration)
-                    } else {
-                        // Placeholder
-                        ProgressInfo(sessionDuration: $viewModel.sessionDuration)
-                            .opacity(0)
+                        TotalTimeInfo(sessionDuration: $viewModel.sessionDuration)
                     }
+                    .padding(.horizontal)
+                    .opacity(dataService.activities.isEmpty ? 0 : 1)
                     
-                    
-                    Spacer()
-                    Spacer()
                     ActivitySelector(isTimerRunning: $viewModel.isRunning)
-                        .padding(.top)
-                        .padding(.bottom, 25)
-                        .padding(.horizontal, 25)
+                        .padding(.horizontal)
+                        .padding(.bottom)
+                        .padding(.top, 12)
                         .onTapGesture {
                             if !viewModel.isRunning {
                                 isSheetPresented.toggle()
@@ -119,15 +112,7 @@ struct ActivityView: View {
                     Spacer()
                 }
             )
-            .sheet(isPresented: $isSheetPresented, onDismiss: {
-                Task {
-                    do {
-                        try await dataService.getData()
-                    } catch {
-                        print(error)
-                    }
-                }
-            }) {
+            .sheet(isPresented: $isSheetPresented) {
                 if dataService.activities.isEmpty {
                     AddActivityView()
                         .presentationDragIndicator(.visible)

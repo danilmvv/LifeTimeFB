@@ -1,28 +1,19 @@
 import SwiftUI
 
-struct ProgressInfo: View {
+struct TotalTimeInfo: View {
     @Environment(DBService.self) private var dataService
     @Binding var sessionDuration: TimeInterval
     
     var body: some View {
         VStack {
-            Text("\((dataService.currentActivityGoalDuration + sessionDuration).formatTime()) / \(dataService.currentActivity?.goal.formatTime() ?? "0 ч.")")
+            Text("\((dataService.totalActivityDuration + sessionDuration).formatTime())")
                 .font(.headline)
                 .fontDesign(.rounded)
                 .fontWeight(.semibold)
                 .animation(.none)
             
-            HStack {
-                switch GoalType(rawValue: dataService.currentActivity?.goalType ?? "") {
-                case .daily:
-                    Text("сегодня")
-                case .monthly:
-                    Text("в этом месяце")
-                default:
-                    Text("на этой неделе")
-                }
-            }
-            .font(.caption)
+            Text("Всего")
+                .font(.caption)
         }
         .frame(maxWidth: .infinity)
         .padding(.horizontal)
@@ -36,6 +27,6 @@ struct ProgressInfo: View {
 }
 
 #Preview {
-    ProgressInfo(sessionDuration: .constant(21))
+    TotalTimeInfo(sessionDuration: .constant(20))
         .environment(DBService())
 }

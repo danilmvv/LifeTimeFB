@@ -13,7 +13,6 @@
 		3C0360652BFA4B8F00A8183D /* AddSessionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0360642BFA4B8F00A8183D /* AddSessionViewModel.swift */; };
 		3C03606B2BFA6BE700A8183D /* HistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C03606A2BFA6BE700A8183D /* HistoryItem.swift */; };
 		3C03606D2BFA971C00A8183D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3C03606C2BFA971C00A8183D /* README.md */; };
-		3C0360772BFA9C0900A8183D /* Frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C0360762BFA9C0900A8183D /* Frame.png */; };
 		3C32FD2D2BF2906600BE484B /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C32FD2C2BF2906600BE484B /* DateConverter.swift */; };
 		3C32FD2F2BF38C5D00BE484B /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C32FD2E2BF38C5D00BE484B /* AuthView.swift */; };
 		3C32FD322BF3A47400BE484B /* Color+isDark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C32FD312BF3A47400BE484B /* Color+isDark.swift */; };
@@ -59,6 +58,9 @@
 		3CD588F12BE7E4CA0073F8DD /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3CD588F02BE7E4CA0073F8DD /* FirebaseAuth */; };
 		3CD588F32BE7E4CA0073F8DD /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3CD588F22BE7E4CA0073F8DD /* FirebaseFirestore */; };
 		3CD588F52BE7E4CA0073F8DD /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3CD588F42BE7E4CA0073F8DD /* FirebaseFirestoreSwift */; };
+		3CE5C9182C0386B3006C5341 /* TotalTimeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE5C9172C0386B3006C5341 /* TotalTimeInfo.swift */; };
+		3CE5C91F2C03ADA6006C5341 /* EditActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE5C91E2C03ADA6006C5341 /* EditActivityView.swift */; };
+		3CE5C9212C03BB9F006C5341 /* Frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CE5C9202C03BB9F006C5341 /* Frame.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,7 +70,6 @@
 		3C0360642BFA4B8F00A8183D /* AddSessionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSessionViewModel.swift; sourceTree = "<group>"; };
 		3C03606A2BFA6BE700A8183D /* HistoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItem.swift; sourceTree = "<group>"; };
 		3C03606C2BFA971C00A8183D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		3C0360762BFA9C0900A8183D /* Frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Frame.png; sourceTree = "<group>"; };
 		3C32FD2C2BF2906600BE484B /* DateConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConverter.swift; sourceTree = "<group>"; };
 		3C32FD2E2BF38C5D00BE484B /* AuthView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		3C32FD312BF3A47400BE484B /* Color+isDark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+isDark.swift"; sourceTree = "<group>"; };
@@ -113,6 +114,9 @@
 		3CD588E32BE7E2C10073F8DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3CD588E62BE7E2C10073F8DD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3CD588ED2BE7E48A0073F8DD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3CE5C9172C0386B3006C5341 /* TotalTimeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalTimeInfo.swift; sourceTree = "<group>"; };
+		3CE5C91E2C03ADA6006C5341 /* EditActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditActivityView.swift; sourceTree = "<group>"; };
+		3CE5C9202C03BB9F006C5341 /* Frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Frame.png; path = ../../../../../Desktop/Frame.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,7 +161,7 @@
 		3C03606F2BFA98F300A8183D /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				3C0360762BFA9C0900A8183D /* Frame.png */,
+				3CE5C9202C03BB9F006C5341 /* Frame.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -315,6 +319,7 @@
 				3C7DE3792BEFCDF50026923F /* ActivityViewModel.swift */,
 				3C56C95C2BF116C1000DD283 /* ActivityList */,
 				3C56C9592BF109F6000DD283 /* AddActivity */,
+				3CE5C91D2C03AD5E006C5341 /* EditActivity */,
 				3C7DE37D2BEFDE330026923F /* Components */,
 			);
 			path = Activity;
@@ -329,6 +334,7 @@
 				3C7DE37B2BEFDC640026923F /* FormattedTimeText.swift */,
 				3C56C9672BF14488000DD283 /* DaysPicker.swift */,
 				3C32FD372BF3F44700BE484B /* ProgressInfo.swift */,
+				3CE5C9172C0386B3006C5341 /* TotalTimeInfo.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -384,6 +390,14 @@
 				3CD588E62BE7E2C10073F8DD /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3CE5C91D2C03AD5E006C5341 /* EditActivity */ = {
+			isa = PBXGroup;
+			children = (
+				3CE5C91E2C03ADA6006C5341 /* EditActivityView.swift */,
+			);
+			path = EditActivity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -452,9 +466,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C0360772BFA9C0900A8183D /* Frame.png in Resources */,
 				3CD588E72BE7E2C10073F8DD /* Preview Assets.xcassets in Resources */,
 				3CD588E42BE7E2C10073F8DD /* Assets.xcassets in Resources */,
+				3CE5C9212C03BB9F006C5341 /* Frame.png in Resources */,
 				3C03606D2BFA971C00A8183D /* README.md in Resources */,
 				3CD588EE2BE7E48A0073F8DD /* GoogleService-Info.plist in Resources */,
 			);
@@ -481,6 +495,7 @@
 				3C56C94A2BF0E649000DD283 /* ActivityListView.swift in Sources */,
 				3C7DE34B2BEEA6440026923F /* AuthService.swift in Sources */,
 				3C0360602BFA40AE00A8183D /* SplashView.swift in Sources */,
+				3CE5C9182C0386B3006C5341 /* TotalTimeInfo.swift in Sources */,
 				3C7DE3352BED159A0026923F /* SettingsView.swift in Sources */,
 				3C7DE3402BEE88E10026923F /* EmailSignInView.swift in Sources */,
 				3C56C94E2BF0EAC7000DD283 /* ActivityInfoCard.swift in Sources */,
@@ -495,6 +510,7 @@
 				3C03606B2BFA6BE700A8183D /* HistoryItem.swift in Sources */,
 				3CD588E02BE7E2BF0073F8DD /* LifeTimeApp.swift in Sources */,
 				3C56C9662BF131C2000DD283 /* CustomNumberField.swift in Sources */,
+				3CE5C91F2C03ADA6006C5341 /* EditActivityView.swift in Sources */,
 				3C03605E2BFA39BA00A8183D /* ToastView.swift in Sources */,
 				3C56C9562BF106E8000DD283 /* StatsView.swift in Sources */,
 				3C56C94C2BF0EA7C000DD283 /* DBService.swift in Sources */,

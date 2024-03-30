@@ -14,86 +14,10 @@ class DBService {
     var activitiesLoadingState: LoadingState = .fetched
     var sessionsLoadingState: LoadingState = .fetched
     
-    var totalDuration: TimeInterval {
-        guard let currentActivity = currentActivity else { return 0 }
-        
-        let totalDuration = getTotalDuration(activity: currentActivity)
-        return totalDuration
-    }
-    
-    var goalProgress: Double {
-        guard let currentActivity = currentActivity else { return 0 }
-        
-        let progress = getProgress(activity: currentActivity)
-        return progress
-        
-    }
-    
-    //MARK: Progress functions
-    
-    func getProgress(activity: Activity) -> Double {
-        let totalDuration = getTotalDuration(activity: activity)
-        let progress = totalDuration / activity.goal
-        
-        //        String(format: "%.2f%%", progress * 100)
-        return progress
-    }
-    
-    func getTotalDuration(activity: Activity) -> TimeInterval {
-        let filteredSessions = filterSessionsByGoalType(activity: activity)
-        let totalDuration = filteredSessions.reduce(0) { $0 + $1.duration }
-        
-        return totalDuration
-    }
-    
-    func filterSessionsByGoalType(activity: Activity) -> [Session] {
-        let today = Date()
-        let calendar = Calendar.current
-        
-        let currentActivitySessions = sessions.filter { $0.activityID == activity.id }
-        var filteredSessions: [Session] = []
-        
-        switch GoalType(rawValue: activity.goalType) {
-        case .daily:
-            let startOfDay = calendar.startOfDay(for: today)
-            let endOfDay = calendar.date(byAdding: .second, value: 86399, to: startOfDay)!
-            filteredSessions = currentActivitySessions.filter {
-                formatDate($0.dateStarted) >= startOfDay && formatDate($0.dateStarted) <= endOfDay
-            }
-            
-        case .weekly:
-            let components = calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: today)
-            let startOfWeek = calendar.date(from: components)!
-            let endOfWeek = calendar.date(byAdding: .second, value: 604799, to: startOfWeek)!
-            
-            filteredSessions = currentActivitySessions.filter {
-                calendar.isDate(formatDate($0.dateStarted), inSameDayAs: startOfWeek)
-                || (formatDate($0.dateStarted) > startOfWeek && formatDate($0.dateStarted) <= endOfWeek) }
-            
-        case .monthly:
-            let startOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: today))!
-            let endOfMonth = calendar.date(byAdding: DateComponents(month: 1, day: -1), to: startOfMonth)!
-            
-            filteredSessions = currentActivitySessions.filter {
-                formatDate($0.dateStarted) >= startOfMonth && formatDate($0.dateStarted) <= endOfMonth
-            }
-        default:
-            filteredSessions = currentActivitySessions
-        }
-        
-        return filteredSessions
-    }
-    
-    private func formatDate(_ date: String) -> Date {
-        let formatted = DateConverter.shared.getDateFromString(date) ?? Date()
-        
-        return formatted
-    }
-    
-    //MARK: Data functions
+    //MARK: Data manipulation
     
     @MainActor
-    func getData() async throws {
+    func fetchData() async throws {
         guard let uID = AuthService.shared.user?.uid else {
             print("uID not found")
             return
@@ -131,6 +55,26 @@ class DBService {
         let dbRef = db.collection("users").document(uID).collection("activities")
         
         try await dbRef.document(activity.id).setData(activity.asDictionary())
+        
+        let index = activities.firstIndex(where: { activity.dateAdded > $0.dateAdded })
+        activities.insert(activity, at: index ?? activities.endIndex)
+    }
+    
+    @MainActor
+    func updateActivity(activity: Activity) async throws {
+        guard let uID = AuthService.shared.user?.uid else {
+            print("uID not found")
+            return
+        }
+        
+        let db = Firestore.firestore()
+        let dbRef = db.collection("users").document(uID).collection("activities")
+        
+        try await dbRef.document(activity.id).setData(activity.asDictionary())
+        
+        if let index = activities.firstIndex(where: { activity.id == $0.id }) {
+            activities[index] = activity
+        }
     }
     
     @MainActor
@@ -144,6 +88,9 @@ class DBService {
         let dbRef = db.collection("users").document(uID).collection("sessions")
         
         try await dbRef.document(session.id).setData(session.asDictionary())
+        
+        let index = sessions.firstIndex(where: { session.dateStarted > $0.dateStarted })
+        sessions.insert(session, at: index ?? sessions.endIndex)
     }
     
     func deleteActivity(id: String) {
@@ -221,5 +168,95 @@ class DBService {
                     self?.sessions.removeAll { $0.id == id }
                 }
             }
+    }
+}
+
+
+//MARK: Progress calculation
+
+extension DBService {
+    
+    //MARK: Current Activity progress vars
+    var totalActivityDuration: TimeInterval {
+        guard let currentActivity = currentActivity else { return 0 }
+        
+        let activitySessions = sessions.filter { $0.activityID == currentActivity.id }
+        let totalDuration = activitySessions.reduce(0) {$0 + $1.duration}
+        return totalDuration
+    }
+    
+    var currentActivityGoalDuration: TimeInterval {
+        guard let currentActivity = currentActivity else { return 0 }
+        let totalDuration = getActivityGoalDuration(activity: currentActivity)
+        
+        return totalDuration
+    }
+    
+    var currentActivityGoalProgress: Double {
+        guard let currentActivity = currentActivity else { return 0 }
+        
+        let progress = getActivityProgress(activity: currentActivity)
+        return progress
+    }
+    
+    //MARK: Activity calculation functions
+    func getActivityProgress(activity: Activity) -> Double {
+        let totalDuration = getActivityGoalDuration(activity: activity)
+        let progress = totalDuration / activity.goal
+        
+        //        String(format: "%.2f%%", progress * 100)
+        return progress
+    }
+    
+    func getActivityGoalDuration(activity: Activity) -> TimeInterval {
+        let filteredSessions = filterSessionsByGoalType(activity: activity)
+        let totalDuration = filteredSessions.reduce(0) { $0 + $1.duration }
+        
+        return totalDuration
+    }
+    
+    // Получаем Сессии за нужный временной период (в зависимости от типа цели)
+    private func filterSessionsByGoalType(activity: Activity) -> [Session] {
+        let today = Date()
+        let calendar = Calendar.current
+        
+        let currentActivitySessions = sessions.filter { $0.activityID == activity.id }
+        var filteredSessions: [Session] = []
+        
+        switch GoalType(rawValue: activity.goalType) {
+        case .daily:
+            let startOfDay = calendar.startOfDay(for: today)
+            let endOfDay = calendar.date(byAdding: .second, value: 86399, to: startOfDay)!
+            filteredSessions = currentActivitySessions.filter {
+                formatDate($0.dateStarted) >= startOfDay && formatDate($0.dateStarted) <= endOfDay
+            }
+            
+        case .weekly:
+            let components = calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: today)
+            let startOfWeek = calendar.date(from: components)!
+            let endOfWeek = calendar.date(byAdding: .second, value: 604799, to: startOfWeek)!
+            
+            filteredSessions = currentActivitySessions.filter {
+                calendar.isDate(formatDate($0.dateStarted), inSameDayAs: startOfWeek)
+                || (formatDate($0.dateStarted) > startOfWeek && formatDate($0.dateStarted) <= endOfWeek) }
+            
+        case .monthly:
+            let startOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: today))!
+            let endOfMonth = calendar.date(byAdding: DateComponents(month: 1, day: -1), to: startOfMonth)!
+            
+            filteredSessions = currentActivitySessions.filter {
+                formatDate($0.dateStarted) >= startOfMonth && formatDate($0.dateStarted) <= endOfMonth
+            }
+        default:
+            filteredSessions = currentActivitySessions
+        }
+        
+        return filteredSessions
+    }
+    
+    private func formatDate(_ date: String) -> Date {
+        let formatted = DateConverter.shared.getDateFromString(date) ?? Date()
+        
+        return formatted
     }
 }

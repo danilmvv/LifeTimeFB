@@ -2,12 +2,7 @@ import SwiftUI
 
 struct ActivityInfoCard: View {
     @Environment(DBService.self) private var dataService
-    
     var activity: Activity
-    
-    var currentProgress: Double {
-        return dataService.goalProgress
-    }
     
     var body: some View {
         HStack {
@@ -27,7 +22,7 @@ struct ActivityInfoCard: View {
         .padding()
         .frame(maxWidth: .infinity)
         .background {
-            ProgressBackground(progress: dataService.getProgress(activity: activity), fillColor: Color.fromHexString(activity.color))
+            ProgressBackground(progress: dataService.getActivityProgress(activity: activity), fillColor: Color.fromHexString(activity.color))
         }
     }
 }
@@ -39,16 +34,17 @@ struct ProgressBackground: View {
 
     var body: some View {
         GeometryReader { geometry in
-            ZStack {
-                RoundedRectangle(cornerRadius: cornerRadius)
+            ZStack(alignment: .leading) {
+                Rectangle()
                     .fill(fillColor)
                     .opacity(0.5)
-                    .overlay(alignment: .leading) {
-                        RoundedRectangle(cornerRadius: cornerRadius)
-                            .fill(fillColor)
-                            .frame(width: geometry.size.width * progress)
-                    }
+                
+                Rectangle()
+                    .fill(fillColor)
+                    .frame(width: geometry.size.width * min(progress, 1))
+                    .clipped()
             }
+            .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
         }
     }
 }
