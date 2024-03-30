@@ -5,8 +5,20 @@ extension AddSessionView {
     @Observable
     class ViewModel {
         var selectedDate = Date()
-        var startTime = Date().addingTimeInterval(-1800)
-        var endTime = Date()
+        var startTime = Date().addingTimeInterval(-1800) {
+            didSet {
+                if startTime >= endTime {
+                    endTime = Calendar.current.date(byAdding: .minute, value: 1, to: startTime) ?? startTime
+                }
+            }
+        }
+        var endTime = Date() {
+            didSet {
+                if endTime <= startTime {
+                    startTime = Calendar.current.date(byAdding: .minute, value: -1, to: endTime) ?? endTime
+                }
+            }
+        }
         
         func createSession(activity: Activity) -> Session {
             let dateFormatter = DateConverter.shared

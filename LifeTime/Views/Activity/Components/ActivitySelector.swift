@@ -61,12 +61,13 @@ struct ActivitySelector: View {
         }
         .animation(.default, value: dataService.activities)
         .background {
-            RoundedRectangle(cornerRadius: 50)
+            RoundedRectangle(cornerRadius: 10)
                 .fill(
                     !dataService.activities.isEmpty && dataService.currentActivity != nil
                     ? Color.fromHexString(dataService.currentActivity!.color)
                     : Color.backgroundSecondary
                 )
+                .shadow(radius: 4)
         }
     }
     

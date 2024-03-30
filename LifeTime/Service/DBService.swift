@@ -24,32 +24,29 @@ class DBService {
     var goalProgress: Double {
         guard let currentActivity = currentActivity else { return 0 }
         
-        if totalDuration > 0 {
-            let progress = getProgress(activity: currentActivity, duration: totalDuration)
-            return progress
-        }
+        let progress = getProgress(activity: currentActivity)
+        return progress
         
-        return 0
     }
     
     //MARK: Progress functions
     
-    private func getProgress(activity: Activity, duration: TimeInterval) -> Double {
-        let totalDuration = duration
+    func getProgress(activity: Activity) -> Double {
+        let totalDuration = getTotalDuration(activity: activity)
         let progress = totalDuration / activity.goal
         
         //        String(format: "%.2f%%", progress * 100)
         return progress
     }
     
-    private func getTotalDuration(activity: Activity) -> TimeInterval {
+    func getTotalDuration(activity: Activity) -> TimeInterval {
         let filteredSessions = filterSessionsByGoalType(activity: activity)
         let totalDuration = filteredSessions.reduce(0) { $0 + $1.duration }
         
         return totalDuration
     }
     
-    private func filterSessionsByGoalType(activity: Activity) -> [Session] {
+    func filterSessionsByGoalType(activity: Activity) -> [Session] {
         let today = Date()
         let calendar = Calendar.current
         
@@ -154,9 +151,9 @@ class DBService {
             print("uID not found")
             return
         }
-
+        
         let db = Firestore.firestore()
-
+        
         db.collection("users")
             .document(uID)
             .collection("activities")

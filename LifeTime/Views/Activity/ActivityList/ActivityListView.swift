@@ -38,6 +38,8 @@ struct ActivityListView: View {
                                 }
                                 
                                 Button(role: .destructive) {
+                                    print(activity.title)
+                                    activityToDelete = activity
                                     confirmationShown = true
                                 } label: {
                                     Label("Удалить", systemImage: "trash")
@@ -48,9 +50,9 @@ struct ActivityListView: View {
                                 isPresented: $confirmationShown,
                                 titleVisibility: .visible
                             ) {
-                                Button("Да", role: .destructive) {
+                                Button("Удалить", role: .destructive) {
                                     withAnimation {
-                                        dataService.deleteActivity(id: activity.id)
+                                        dataService.deleteActivity(id: activityToDelete!.id)
                                     }
                                 }
                             }

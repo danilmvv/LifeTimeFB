@@ -31,7 +31,7 @@ struct HistoryView: View {
                 Color.backgroundPrimary
                     .ignoresSafeArea()
                 
-                if !dataService.sessions.isEmpty {
+                if !filteredSessions.isEmpty {
                     List{
                         ForEach(filteredSessions) { session in
                             HistoryItem(title: getActivityTitle(session: session), session: session)
@@ -50,10 +50,17 @@ struct HistoryView: View {
                     .animation(.default, value: dataService.sessions)
 //                    .animation(.bouncy, value: filteredSessions)
                 } else {
-                    Text("Начинайте отслеживать свои активности!")
-                        .font(.headline)
-                        .padding()
-                        .multilineTextAlignment(.center)
+                    VStack {
+                        Image(systemName: "clock")
+                            .font(.title)
+                            .padding(8)
+                        
+                        Text("Начните отслеживать активность!")
+                            .font(.subheadline)
+                            .fontWeight(.semibold)
+                            .padding(.horizontal)
+                            .multilineTextAlignment(.center)
+                    }
                 }
             }
             .navigationTitle(filterTitle)
@@ -63,7 +70,6 @@ struct HistoryView: View {
                         isSheetPresented.toggle()
                     } label: {
                         Image(systemName: "plus")
-                            .tint(.accent)
                     }
                 }
                 
@@ -103,15 +109,14 @@ struct HistoryView: View {
                             ? "line.horizontal.3.decrease.circle"
                             : "line.horizontal.3.decrease.circle.fill"
                         )
-                        .tint(.accent)
                     }
                 }
             }
+            .tint(.accent)
             .sheet(isPresented: $isSheetPresented, onDismiss: {
                 Task {
                     do {
                         try await dataService.getData()
-                        print("update")
                     } catch {
                         print(error)
                     }

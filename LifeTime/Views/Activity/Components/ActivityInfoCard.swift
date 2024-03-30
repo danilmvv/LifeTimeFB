@@ -1,7 +1,13 @@
 import SwiftUI
 
 struct ActivityInfoCard: View {
+    @Environment(DBService.self) private var dataService
+    
     var activity: Activity
+    
+    var currentProgress: Double {
+        return dataService.goalProgress
+    }
     
     var body: some View {
         HStack {
@@ -21,12 +27,33 @@ struct ActivityInfoCard: View {
         .padding()
         .frame(maxWidth: .infinity)
         .background {
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color.fromHexString(activity.color))
+            ProgressBackground(progress: dataService.getProgress(activity: activity), fillColor: Color.fromHexString(activity.color))
+        }
+    }
+}
+
+struct ProgressBackground: View {
+    var progress: Double
+    var fillColor: Color
+    var cornerRadius: CGFloat = 10
+
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack {
+                RoundedRectangle(cornerRadius: cornerRadius)
+                    .fill(fillColor)
+                    .opacity(0.5)
+                    .overlay(alignment: .leading) {
+                        RoundedRectangle(cornerRadius: cornerRadius)
+                            .fill(fillColor)
+                            .frame(width: geometry.size.width * progress)
+                    }
+            }
         }
     }
 }
 
 #Preview {
     ActivityInfoCard(activity: Activity.default)
+        .environment(DBService())
 }
