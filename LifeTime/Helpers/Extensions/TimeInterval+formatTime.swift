@@ -1,7 +1,7 @@
 import Foundation
 
 extension TimeInterval {
-    func formatTime(decimals: Int = 1) -> String {
+    func formatTime(decimals: Int = 1, showHourUnits: Bool = true) -> String {
         if self < 60 {
             return String(format: "%.0f сек.", self)
         } else if self < 3600 {
@@ -11,10 +11,18 @@ extension TimeInterval {
             let hours = self / 3600.0
             let decimalPart = hours.truncatingRemainder(dividingBy: 1)
             
-            if decimalPart == 0 {
-                return String(format: "%.0f ч.", hours)
+            if showHourUnits {
+                if decimalPart == 0 {
+                    return String(format: "%.0f ч.", hours)
+                } else {
+                    return String(format: "%.\(decimals)f ч.", hours)
+                }
             } else {
-                return String(format: "%.\(decimals)f ч.", hours)
+                if decimalPart == 0 {
+                    return String(format: "%.0f", hours)
+                } else {
+                    return String(format: "%.\(decimals)f", hours)
+                }
             }
         }
     }

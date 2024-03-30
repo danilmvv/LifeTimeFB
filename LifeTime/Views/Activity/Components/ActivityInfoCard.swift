@@ -4,6 +4,10 @@ struct ActivityInfoCard: View {
     @Environment(DBService.self) private var dataService
     var activity: Activity
     
+    var duration: TimeInterval {
+        return dataService.getActivityGoalDuration(activity: activity)
+    }
+    
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
@@ -11,10 +15,25 @@ struct ActivityInfoCard: View {
                     .font(.title3)
                     .fontWeight(.bold)
                 
-                Text("C \(DateConverter.shared.getReadableDateString(activity.dateAdded))")
-                    .font(.subheadline)
-                    .fontWeight(.light)
+//                Text("C \(DateConverter.shared.getReadableDateString(activity.dateAdded))")
+//                    .font(.subheadline)
+//                    .fontWeight(.light)
+                
+                HStack {
+                    Text("\(duration.formatTime(showHourUnits: false))/\(activity.goal.formatTime())")
+                    
+                    switch GoalType(rawValue: activity.goalType) {
+                    case .daily:
+                        Text("сегодня")
+                    case .monthly:
+                        Text("в этом месяце")
+                    default:
+                        Text("на этой неделе")
+                    }
+                }
+                .font(.footnote)
             }
+            .fontDesign(.rounded)
             .foregroundStyle(Color.fromHexString(activity.color).isDark ? Color.textPrimary : Color.accentText)
             
             Spacer()

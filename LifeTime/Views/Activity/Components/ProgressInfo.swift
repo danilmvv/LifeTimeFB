@@ -6,9 +6,8 @@ struct ProgressInfo: View {
     
     var body: some View {
         VStack {
-            Text("\((dataService.currentActivityGoalDuration + sessionDuration).formatTime()) / \(dataService.currentActivity?.goal.formatTime() ?? "0 ч.")")
+            Text("\((dataService.currentActivityGoalDuration + sessionDuration).formatTime(showHourUnits: false)) / \(dataService.currentActivity?.goal.formatTime() ?? "0 ч.")")
                 .font(.headline)
-                .fontDesign(.rounded)
                 .fontWeight(.semibold)
                 .animation(.none)
             
@@ -23,6 +22,7 @@ struct ProgressInfo: View {
                 }
             }
             .font(.caption)
+            .fontDesign(.rounded)
         }
         .frame(maxWidth: .infinity)
         .padding(.horizontal)

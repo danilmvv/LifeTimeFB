@@ -8,13 +8,13 @@ struct TotalTimeInfo: View {
         VStack {
             Text("\((dataService.totalActivityDuration + sessionDuration).formatTime())")
                 .font(.headline)
-                .fontDesign(.rounded)
                 .fontWeight(.semibold)
                 .animation(.none)
             
             Text("Всего")
                 .font(.caption)
         }
+        .fontDesign(.rounded)
         .frame(maxWidth: .infinity)
         .padding(.horizontal)
         .padding(.vertical, 20)

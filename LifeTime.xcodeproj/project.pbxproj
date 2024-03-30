@@ -61,6 +61,7 @@
 		3CE5C9182C0386B3006C5341 /* TotalTimeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE5C9172C0386B3006C5341 /* TotalTimeInfo.swift */; };
 		3CE5C91F2C03ADA6006C5341 /* EditActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE5C91E2C03ADA6006C5341 /* EditActivityView.swift */; };
 		3CE5C9232C03C60B006C5341 /* Image.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CE5C9222C03C60B006C5341 /* Image.png */; };
+		3CE5C9252C03CEAF006C5341 /* ChartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE5C9242C03CEAF006C5341 /* ChartItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -117,6 +118,7 @@
 		3CE5C9172C0386B3006C5341 /* TotalTimeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalTimeInfo.swift; sourceTree = "<group>"; };
 		3CE5C91E2C03ADA6006C5341 /* EditActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditActivityView.swift; sourceTree = "<group>"; };
 		3CE5C9222C03C60B006C5341 /* Image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Image.png; sourceTree = "<group>"; };
+		3CE5C9242C03CEAF006C5341 /* ChartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -346,6 +348,7 @@
 				3C56C9472BF0DDE0000DD283 /* Session.swift */,
 				3C56C9402BF0C3F1000DD283 /* Profile.swift */,
 				3C32FD352BF3DD7500BE484B /* LoadingState.swift */,
+				3CE5C9242C03CEAF006C5341 /* ChartItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -486,6 +489,7 @@
 				3C32FD342BF3A5AC00BE484B /* Color+Random.swift in Sources */,
 				3C0360652BFA4B8F00A8183D /* AddSessionViewModel.swift in Sources */,
 				3C7DE3732BEF8C4C0026923F /* View+Styles.swift in Sources */,
+				3CE5C9252C03CEAF006C5341 /* ChartItem.swift in Sources */,
 				3C7DE36B2BEF60F70026923F /* CustomTextField.swift in Sources */,
 				3C32FD2F2BF38C5D00BE484B /* AuthView.swift in Sources */,
 				3C56C9502BF0FC04000DD283 /* SecondaryAppButton.swift in Sources */,

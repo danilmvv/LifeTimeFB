@@ -180,8 +180,7 @@ extension DBService {
     var totalActivityDuration: TimeInterval {
         guard let currentActivity = currentActivity else { return 0 }
         
-        let activitySessions = sessions.filter { $0.activityID == currentActivity.id }
-        let totalDuration = activitySessions.reduce(0) {$0 + $1.duration}
+        let totalDuration = getActivityTotalDuration(activity: currentActivity)
         return totalDuration
     }
     
@@ -200,12 +199,11 @@ extension DBService {
     }
     
     //MARK: Activity calculation functions
-    func getActivityProgress(activity: Activity) -> Double {
-        let totalDuration = getActivityGoalDuration(activity: activity)
-        let progress = totalDuration / activity.goal
+    func getActivityTotalDuration(activity: Activity) -> TimeInterval {
+        let activitySessions = sessions.filter { $0.activityID == activity.id }
         
-        //        String(format: "%.2f%%", progress * 100)
-        return progress
+        let totalDuration = activitySessions.reduce(0) {$0 + $1.duration}
+        return totalDuration
     }
     
     func getActivityGoalDuration(activity: Activity) -> TimeInterval {
@@ -215,6 +213,14 @@ extension DBService {
         return totalDuration
     }
     
+    func getActivityProgress(activity: Activity) -> Double {
+        let totalDuration = getActivityGoalDuration(activity: activity)
+        let progress = totalDuration / activity.goal
+        
+        //        String(format: "%.2f%%", progress * 100)
+        return progress
+    }
+
     // Получаем Сессии за нужный временной период (в зависимости от типа цели)
     private func filterSessionsByGoalType(activity: Activity) -> [Session] {
         let today = Date()

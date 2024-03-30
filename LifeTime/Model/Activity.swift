@@ -28,5 +28,5 @@ struct Activity: Codable, Identifiable, Equatable {
         }
     }
     
-    static let `default` = Activity(id: UUID().uuidString, title: "Чтение", dateAdded: "2024-05-14T18:36:00+05:00", goal: 0, goalType: GoalType.weekly.rawValue, goalCompletedCount: 0, color: "#21B44A", notificationsEnabled: false)
+    static let `default` = Activity(id: UUID().uuidString, title: "Чтение", dateAdded: "2024-05-14T18:36:00+05:00", goal: 3600, goalType: GoalType.weekly.rawValue, goalCompletedCount: 0, color: "#21B44A", notificationsEnabled: false)
 }

@@ -62,6 +62,7 @@ struct ActivitySelector: View {
                 }
             }
         }
+        .fontDesign(.rounded)
         .animation(.default, value: dataService.activities)
         .background {
             RoundedRectangle(cornerRadius: 10)
