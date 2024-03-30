@@ -1,3 +1,3 @@
 # LifeTime
 
-![App screens](/LifeTime/Resources/Images/Frame.png)
+![App screens](/LifeTime/Resources/Images/Image.png)

@@ -60,7 +60,7 @@
 		3CD588F52BE7E4CA0073F8DD /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3CD588F42BE7E4CA0073F8DD /* FirebaseFirestoreSwift */; };
 		3CE5C9182C0386B3006C5341 /* TotalTimeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE5C9172C0386B3006C5341 /* TotalTimeInfo.swift */; };
 		3CE5C91F2C03ADA6006C5341 /* EditActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE5C91E2C03ADA6006C5341 /* EditActivityView.swift */; };
-		3CE5C9212C03BB9F006C5341 /* Frame.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CE5C9202C03BB9F006C5341 /* Frame.png */; };
+		3CE5C9232C03C60B006C5341 /* Image.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CE5C9222C03C60B006C5341 /* Image.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -116,7 +116,7 @@
 		3CD588ED2BE7E48A0073F8DD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3CE5C9172C0386B3006C5341 /* TotalTimeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalTimeInfo.swift; sourceTree = "<group>"; };
 		3CE5C91E2C03ADA6006C5341 /* EditActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditActivityView.swift; sourceTree = "<group>"; };
-		3CE5C9202C03BB9F006C5341 /* Frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Frame.png; path = ../../../../../Desktop/Frame.png; sourceTree = "<group>"; };
+		3CE5C9222C03C60B006C5341 /* Image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Image.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,7 +161,7 @@
 		3C03606F2BFA98F300A8183D /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				3CE5C9202C03BB9F006C5341 /* Frame.png */,
+				3CE5C9222C03C60B006C5341 /* Image.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -467,8 +467,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CD588E72BE7E2C10073F8DD /* Preview Assets.xcassets in Resources */,
+				3CE5C9232C03C60B006C5341 /* Image.png in Resources */,
 				3CD588E42BE7E2C10073F8DD /* Assets.xcassets in Resources */,
-				3CE5C9212C03BB9F006C5341 /* Frame.png in Resources */,
 				3C03606D2BFA971C00A8183D /* README.md in Resources */,
 				3CD588EE2BE7E48A0073F8DD /* GoogleService-Info.plist in Resources */,
 			);
