@@ -62,6 +62,7 @@
 		3CE5C91F2C03ADA6006C5341 /* EditActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE5C91E2C03ADA6006C5341 /* EditActivityView.swift */; };
 		3CE5C9232C03C60B006C5341 /* Image.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CE5C9222C03C60B006C5341 /* Image.png */; };
 		3CE5C9252C03CEAF006C5341 /* ChartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CE5C9242C03CEAF006C5341 /* ChartItem.swift */; };
+		3CEBF1B52C0456C5002E4DB7 /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CEBF1B42C0456C5002E4DB7 /* BarChartView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -119,6 +120,7 @@
 		3CE5C91E2C03ADA6006C5341 /* EditActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditActivityView.swift; sourceTree = "<group>"; };
 		3CE5C9222C03C60B006C5341 /* Image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Image.png; sourceTree = "<group>"; };
 		3CE5C9242C03CEAF006C5341 /* ChartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartItem.swift; sourceTree = "<group>"; };
+		3CEBF1B42C0456C5002E4DB7 /* BarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				3C56C9552BF106E8000DD283 /* StatsView.swift */,
+				3CEBF1B32C0456B0002E4DB7 /* Charts */,
 			);
 			path = Stats;
 			sourceTree = "<group>";
@@ -403,6 +406,14 @@
 			path = EditActivity;
 			sourceTree = "<group>";
 		};
+		3CEBF1B32C0456B0002E4DB7 /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				3CEBF1B42C0456C5002E4DB7 /* BarChartView.swift */,
+			);
+			path = Charts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -531,6 +542,7 @@
 				3C56C9682BF14488000DD283 /* DaysPicker.swift in Sources */,
 				3C32FD382BF3F44700BE484B /* ProgressInfo.swift in Sources */,
 				3C7DE3812BF0A9120026923F /* TimeInterval+formatTime.swift in Sources */,
+				3CEBF1B52C0456C5002E4DB7 /* BarChartView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

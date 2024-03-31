@@ -26,4 +26,9 @@ extension TimeInterval {
             }
         }
     }
+    
+    func toHours(decimalPlaces: Int = 1) -> TimeInterval {
+        let hours = self / 3600.0
+        return Double(String(format: "%.\(decimalPlaces)f", hours)) ?? 0.0
+    }
 }
